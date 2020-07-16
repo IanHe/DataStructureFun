@@ -5,17 +5,9 @@
  */
 public class LinkedList_ReverseLinkedList_Easy {
   public static void main(String[] args) {
-    ListNode node1 = new ListNode(1);
-    ListNode node2 = new ListNode(2);
-    ListNode node3 = new ListNode(3);
-    ListNode node4 = new ListNode(4);
-    ListNode node5 = new ListNode(5);
-    node1.next = node2;
-    node2.next = node3;
-    node3.next = node4;
-    node4.next = node5;
+    ListNode head = prepareData(6);
 //    printNodes(reverseList(node1));
-    printNodes(reverseList_recursive(node1));
+    printNodes(reverseList_recursive(head));
   }
 
   /**
@@ -76,6 +68,28 @@ public class LinkedList_ReverseLinkedList_Easy {
       head = head.next;
     }
     System.out.print(head.val);
+  }
+
+  private static ListNode prepareData(int size) {
+    ListNode next = null;
+    for (int i = size; i > 0; i--) {
+      ListNode node = new ListNode(i);
+      if(next !=null){
+        node.next = next;
+      }
+      next = node;
+    }
+    return next;
+//    ListNode node1 = new ListNode(1);
+//    ListNode node2 = new ListNode(2);
+//    ListNode node3 = new ListNode(3);
+//    ListNode node4 = new ListNode(4);
+//    ListNode node5 = new ListNode(5);
+//    node1.next = node2;
+//    node2.next = node3;
+//    node3.next = node4;
+//    node4.next = node5;
+//    return node1
   }
 }
 
