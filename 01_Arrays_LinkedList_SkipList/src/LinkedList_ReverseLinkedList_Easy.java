@@ -5,9 +5,9 @@
  */
 public class LinkedList_ReverseLinkedList_Easy {
   public static void main(String[] args) {
-    ListNode head = prepareData(6);
-//    printNodes(reverseList(node1));
-    printNodes(reverseList_recursive(head));
+    ListNode head = ListNode.prepareData(6);
+//    ListNode.printNodes(reverseList(node1));
+    ListNode.printNodes(reverseList_recursive(head));
   }
 
   /**
@@ -43,54 +43,6 @@ public class LinkedList_ReverseLinkedList_Easy {
     return cur;
   }
 
-  //Definition for singly-linked list.
-  private static class ListNode {
-    int val;
-    ListNode next;
-
-    ListNode() {
-    }
-
-    ListNode(int val) {
-      this.val = val;
-    }
-
-    ListNode(int val, ListNode next) {
-      this.val = val;
-      this.next = next;
-    }
-  }
-
-  private static void printNodes(ListNode head) {
-    System.out.println();
-    while (head.next != null) {
-      System.out.print(head.val + ", ");
-      head = head.next;
-    }
-    System.out.print(head.val);
-  }
-
-  private static ListNode prepareData(int size) {
-    ListNode next = null;
-    for (int i = size; i > 0; i--) {
-      ListNode node = new ListNode(i);
-      if(next !=null){
-        node.next = next;
-      }
-      next = node;
-    }
-    return next;
-//    ListNode node1 = new ListNode(1);
-//    ListNode node2 = new ListNode(2);
-//    ListNode node3 = new ListNode(3);
-//    ListNode node4 = new ListNode(4);
-//    ListNode node5 = new ListNode(5);
-//    node1.next = node2;
-//    node2.next = node3;
-//    node3.next = node4;
-//    node4.next = node5;
-//    return node1
-  }
 }
 
 
