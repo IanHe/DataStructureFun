@@ -3,7 +3,7 @@
  * Name: Move Zeroes
  * Link: https://leetcode-cn.com/problems/container-with-most-water/ or https://leetcode.com/problems/container-with-most-water/
  */
-public class ContainerWithMostWater_Medium {
+public class Arrays_ContainerWithMostWater_Medium {
     public static void main(String[] args) {
 //        System.out.println(maxArea_2(new int[]{1, 8, 6, 2, 5, 4, 8, 3, 7}));
         System.out.println(maxArea_1(new int[]{1, 8, 6, 2, 5, 4, 8, 3, 7}));

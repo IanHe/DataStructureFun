@@ -6,7 +6,7 @@
  * 2. Because you can only climb one or two step each time, so you can only reach the final n step from n-1 or n-2 step.
  * 3. F(n) = F(n-1) + F(n-2)
  */
-public class ClimbingStairs_Easy {
+public class Arrays_ClimbingStairs_Easy {
     public static void main(String[] args) {
         System.out.println(climbStairs_3(5));
     }

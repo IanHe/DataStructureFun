@@ -7,7 +7,7 @@ import java.util.List;
  * Name: 3Sum
  * Link: https://leetcode-cn.com/problems/3sum/or https://leetcode.com/problems/3sum/
  */
-public class ThreeSum_Medium {
+public class Arrays_ThreeSum_Medium {
     public static void main(String[] args) {
         System.out.println(threeSum(new int[]{0, 0, 0, 0, 0, 0}));
         System.out.println(threeSum(new int[]{-1, 0, 1, 2, -1, -4}));

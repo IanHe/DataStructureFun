@@ -5,7 +5,7 @@ import java.util.Arrays;
  * Name: Move Zeroes
  * Link: https://leetcode-cn.com/problems/move-zeroes/ or https://leetcode.com/problems/move-zeroes/
  */
-public class MoveZeros_Easy {
+public class Arrays_MoveZeros_Easy {
     public static void main(String[] args) {
 //        moveZeros_1(new int[]{1, 0, 3, 0, 12});
         moveZeros_2(new int[]{1, 0, 3, 0, 12});
