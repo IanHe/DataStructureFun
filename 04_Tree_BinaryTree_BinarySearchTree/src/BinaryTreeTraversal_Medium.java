@@ -7,7 +7,7 @@ import java.util.Stack;
  * Name: Binary Tree Inorder Traversal
  * Link: https://leetcode-cn.com/problems/binary-tree-inorder-traversal/ or https://leetcode.com/problems/binary-tree-inorder-traversal/
  */
-public class BinaryTree_BinaryTreeTraversal_Medium {
+public class BinaryTreeTraversal_Medium {
     public static void main(String[] args) {
 
     }
