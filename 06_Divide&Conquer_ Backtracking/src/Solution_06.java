@@ -2,35 +2,45 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Solution_06 {
+
+    // use string array can save memory
+    String[] letter_map = {" ", "*", "abc", "def", "ghi", "jkl", "mno", "pqrs", "tuv", "wxyz"};
+    List<String> res = new ArrayList<>();
+
     public static void main(String[] args) {
-        List<List<Integer>> subsets = new Solution_06().subsets(new int[]{1, 2, 3});
-        System.out.println(subsets);
+        Solution_06 solution = new Solution_06();
+        solution.letterCombinations("23").forEach(System.out::println);
+    }
+
+    public List<String> letterCombinations(String digits) {
+
+        if (digits == null || digits.length() == 0) {
+            return new ArrayList<>();
+        }
+        iterStr(digits, "", 0);
+        return res;
     }
 
 
-    /*
-        nums = [1, 2, 3]
-        initialize List<List<Integer>> to be: [[]]
-        get 1 out of nums => [[], [1]]
-        get 2 out of nums => [[], [1], [2], [1, 2]]
-        get 3 out of nums => [[], [1], [2], [1, 2], [3], [1,3], [2,3], [1, 2, 3]]
-     */
-    public List<List<Integer>> subsets(int[] nums) {
-        List<List<Integer>> output = new ArrayList<>();
-        output.add(new ArrayList<Integer>());
+    //递归函数
+    void iterStr(String str, String letter, int index) {
 
-        for(int num: nums){
-            List<List<Integer>> newSubsets = new ArrayList<>();
-
-            for(List<Integer> cur : output){
-                // make a copy of cur adding the num, [] => [[], [1]] => [[], [1], [2], [1, 2]]
-               newSubsets.add(new ArrayList<>(cur){{add(num);}});
-            }
-
-            // add new subsets into output
-            output.addAll(newSubsets);
+        //terminator: when depth has reached the end
+        if (index == str.length()) {
+            res.add(letter);
+            return;
         }
 
-        return output;
+        // process
+        // get char represented String
+        char c = str.charAt(index);
+        int pos = c - '0';
+        String map_string = letter_map[pos]; // when char is '2' get "abc"
+
+        for (int i = 0; i < map_string.length(); i++) {
+            iterStr(str, letter + map_string.charAt(i), index + 1);
+        }
     }
+
+
 }
