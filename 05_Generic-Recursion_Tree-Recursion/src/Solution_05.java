@@ -1,10 +1,10 @@
 import java.util.*;
 
-public class Solution {
+public class Solution_05 {
     public static void main(String[] args) {
-        Solution solution = new Solution();
-        TreeNode node = solution.deserialize("1,2,3,null,null,4,5");
-        System.out.println(solution.serialize(node));
+        Solution_05 solution05 = new Solution_05();
+        TreeNode node = solution05.deserialize("1,2,3,null,null,4,5");
+        System.out.println(solution05.serialize(node));
     }
 
     public String serialize(TreeNode root) {
