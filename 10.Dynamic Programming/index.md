@@ -1,6 +1,12 @@
 ##Dynamic Programming
 ![Image of dynamic_programming](imgs/dynamic_programming.jpg)
 ![Image of dynamic_programming_key](imgs/dynamic_programming_key.jpg)
+###How to resolve - DP
+```
+First: find the repeatability(divice)
+Second: define state array - one dimension or two dimensions
+Third: write down: DP Equation
+```
 ###Example 1 - Fibonacci
 ###Solution 1: Simple recursion will calculate lots of repeated value, time complexity: O(2^N)
 ![Image of dynamic_programming_fibonacci](imgs/dynamic_programming_fibonacci.jpg)

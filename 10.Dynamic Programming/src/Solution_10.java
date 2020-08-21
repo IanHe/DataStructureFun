@@ -1,25 +1,36 @@
 public class Solution_10 {
+
     public static void main(String[] args) {
         Solution_10 solution = new Solution_10();
-        System.out.println(solution.longestCommonSubsequence("abcde", "ace"));
+        System.out.println(solution.coinChange(new int[]{1, 2, 5}, 11));
     }
 
-    public int longestCommonSubsequence(String text1, String text2) {
-        int m = text1.length(), n = text2.length();
-        int[][] matrix = new int[m + 1][n + 1];
-        for (int i = 0; i < m; i++) {
-            for (int j = 0; j < n; j++) {
-                //get chars c1, c2 from text1 and text2
-                char c1 = text1.charAt(i), c2 = text2.charAt(j);
-                if (c1 == c2) {
-                    // when c1, c2, get the previous cell then plus 1
-                    matrix[i + 1][j + 1] = matrix[i][j] + 1;
-                } else {
-                    // get the max cell from (left, above)
-                    matrix[i + 1][j + 1] = Math.max(matrix[i + 1][j], matrix[i][j + 1]);
-                }
+    public int coinChange(int[] coins, int amount) {
+        if (coins.length == 0) {
+            return -1;
+        }
+
+        return dfs(coins, amount, new int[amount]);
+    }
+
+    // memo[n] 表示钱币n可以被换取的最少的硬币数，不能换取就为-1
+    // dfs函数的目的是为了找到 amount数量的零钱可以兑换的最少硬币数量，返回其值int
+    public int dfs(int[] coins, int amount, int[] memo) {
+        if (amount < 0) return -1;
+        if (amount == 0) return 0;
+        //retrieve from memo
+        if (memo[amount - 1] != 0) {
+            return memo[amount - 1];
+        }
+        int min = Integer.MAX_VALUE;
+        for (int i = 0; i < coins.length; i++) {
+            int res = dfs(coins, amount - coins[i], memo);
+            if (res >= 0 && res < min) {
+                min = res + 1; // 加1，是为了加上得到res结果的那个步骤中，兑换的一个硬币
             }
         }
-        return matrix[m][n];
+        memo[amount - 1] = (min == Integer.MAX_VALUE ? -1 : min);
+        return memo[amount - 1];
     }
+
 }
