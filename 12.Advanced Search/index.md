@@ -1,0 +1,1 @@
+##Primitive Search(Simple Search)
