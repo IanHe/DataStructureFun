@@ -2,35 +2,24 @@ public class Solution_10 {
 
     public static void main(String[] args) {
         Solution_10 solution = new Solution_10();
-        System.out.println(solution.coinChange(new int[]{1, 2, 5}, 11));
+        System.out.println(solution.maxProfit(new int[]{7,6,4,3,1}));
     }
 
-    public int coinChange(int[] coins, int amount) {
-        if (coins.length == 0) {
-            return -1;
+    public int maxProfit(int[] prices) {
+        int len = prices.length;
+        if (len < 2) {
+            return 0;
         }
 
-        return dfs(coins, amount, new int[amount]);
+        int[] dp = new int[2];
+        dp[0] = 0;
+        dp[1] = -prices[0];
+        for (int i = 1; i < len; i++) {
+            dp[0] = Math.max(dp[0], dp[1] + prices[i]);
+            dp[1] = Math.max(dp[1], -prices[i]);
+        }
+        return dp[0];
     }
 
-    // memo[n] 表示钱币n可以被换取的最少的硬币数，不能换取就为-1
-    // dfs函数的目的是为了找到 amount数量的零钱可以兑换的最少硬币数量，返回其值int
-    public int dfs(int[] coins, int amount, int[] memo) {
-        if (amount < 0) return -1;
-        if (amount == 0) return 0;
-        //retrieve from memo
-        if (memo[amount - 1] != 0) {
-            return memo[amount - 1];
-        }
-        int min = Integer.MAX_VALUE;
-        for (int i = 0; i < coins.length; i++) {
-            int res = dfs(coins, amount - coins[i], memo);
-            if (res >= 0 && res < min) {
-                min = res + 1; // 加1，是为了加上得到res结果的那个步骤中，兑换的一个硬币
-            }
-        }
-        memo[amount - 1] = (min == Integer.MAX_VALUE ? -1 : min);
-        return memo[amount - 1];
-    }
 
 }
