@@ -15,3 +15,13 @@
 ![Image of bfs](imgs/bfs.jpg)
 ###Two-Ended BFS
 ![Image of bfs](imgs/bfs.jpg)
+<br></br>
+<br></br>
+###Heuristic Search(A*) - 启发式搜索
+####BFS can be improved 
+![Image of bfs_improve](imgs/bfs_improve.jpg)
+####Improve BFS by using something more intelligent - Priority Queue(with priority function)
+![Image of bfs_priority_queue](imgs/bfs_priority_queue.jpg)
+![Image of priority_function](imgs/priority_function.jpg)
+####Example: Shorted Path - (Evaluation Function: e.g: Manhattan Distance)
+![Image of shortest_path](imgs/shortest_path.jpg)
