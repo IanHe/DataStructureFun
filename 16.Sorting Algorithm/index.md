@@ -13,3 +13,5 @@
 ###Quick Sort
 ![Image of /quick_sort](imgs//quick_sort.jpg)
 ![Image of /quick_sort_1](imgs//quick_sort_1.jpg)
+###Merge Sort
+![Image of /quick_sort](imgs//merge_sort.jpg)
