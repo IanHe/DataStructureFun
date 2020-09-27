@@ -15,7 +15,7 @@ public class N_aryTreeTraversal_Easy {
      * 1. Time Complexity: O(N), Space Complexity: O(N)
      */
 
-    public List<Integer> preorder_iteration(Node root) {
+    public List<Integer> preorder(Node root) {
         List<Integer> list = new LinkedList<>();
         if (root == null) return list;
         Stack<Node> stack = new Stack<>();
@@ -34,19 +34,19 @@ public class N_aryTreeTraversal_Easy {
      * preorder recursion
      * 1. Time Complexity: O(N)
      */
-    private List<Integer> list;
 
-    public List<Integer> preorder_recursion(Node root) {
-        list = new ArrayList<>();
-        dfs_preorder_recursion(root);
+
+    public List<Integer> preorder(Node root) {
+        List<Integer> list= new ArrayList<>();
+        preorder(root, list);
         return list;
     }
 
-    private void dfs_preorder_recursion(Node root) {
+    private void preorder(Node root, List<Integer> list) {
         if (root == null) return;
         list.add(root.val);
         for (Node child : root.children) {
-            dfs_preorder_recursion(child);
+            preorder(child, list);
         }
     }
 
@@ -54,7 +54,7 @@ public class N_aryTreeTraversal_Easy {
      * postorder iteration
      * 1. Time complexity: O(N), Space complexity: O(N)
      */
-    public List<Integer> postOrder_iteration(Node root) {
+    public List<Integer> postorder(Node root) {
         LinkedList<Integer> list = new LinkedList<>();
         if (root == null) return list;
         LinkedList<Node> stack = new LinkedList<>();
