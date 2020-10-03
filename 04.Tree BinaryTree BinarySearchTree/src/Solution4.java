@@ -1,43 +1,47 @@
 import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
-import java.util.Stack;
 
 public class Solution4 {
     public static void main(String[] args) {
 
     }
 
-    public List<Integer> postorderTraversal(TreeNode root) {
-        LinkedList<Integer> result = new LinkedList<>();
-        if(root == null) return result;
-        Stack<TreeNode> stack = new Stack<>();
-        stack.push(root);
-        while(!stack.empty()){
-            TreeNode node = stack.pop();
-            result.addFirst(node.val);
-            if(node.left!=null) stack.push(node.left);
-            if(node.right!=null) stack.push(node.right);
-        }
-        return result;
+    public List<List<Integer>> levelOrder(Node root) {
+        List<List<Integer>> list = new ArrayList<>();
+        if (root == null) return list;
+        levelOrder(root, 0, list);
+        return list;
     }
 
-    class TreeNode {
-        int val;
-        TreeNode left;
-        TreeNode right;
-
-        TreeNode() {
+    private void levelOrder(Node node, int depth, List<List<Integer>> list){
+        if(node == null) return;
+        if(depth + 1 > list.size()){
+            list.add(new ArrayList<>());
         }
 
-        TreeNode(int val) {
-            this.val = val;
-        }
-
-        TreeNode(int val, TreeNode left, TreeNode right) {
-            this.val = val;
-            this.left = left;
-            this.right = right;
+        list.get(depth).add(node.val);
+        for(Node child: node.children){
+            levelOrder(child, depth + 1, list);
         }
     }
+
+    class Node {
+        public int val;
+        public List<Node> children;
+
+        public Node() {
+        }
+
+        public Node(int _val) {
+            val = _val;
+        }
+
+        public Node(int _val, List<Node> _children) {
+            val = _val;
+            children = _children;
+        }
+    }
+    // 5 6
+    // 1 4 2 3 6 5
 }
