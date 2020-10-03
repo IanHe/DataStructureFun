@@ -1,5 +1,4 @@
 import java.util.ArrayList;
-import java.util.LinkedList;
 import java.util.List;
 
 public class Solution4 {
@@ -14,14 +13,14 @@ public class Solution4 {
         return list;
     }
 
-    private void levelOrder(Node node, int depth, List<List<Integer>> list){
-        if(node == null) return;
-        if(depth + 1 > list.size()){
+    private void levelOrder(Node node, int depth, List<List<Integer>> list) {
+        if (node == null) return;
+        if (depth + 1 > list.size()) {
             list.add(new ArrayList<>());
         }
 
         list.get(depth).add(node.val);
-        for(Node child: node.children){
+        for (Node child : node.children) {
             levelOrder(child, depth + 1, list);
         }
     }
@@ -42,6 +41,4 @@ public class Solution4 {
             children = _children;
         }
     }
-    // 5 6
-    // 1 4 2 3 6 5
 }
