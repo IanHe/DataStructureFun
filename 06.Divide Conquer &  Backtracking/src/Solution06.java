@@ -1,9 +1,15 @@
-##51. N-Queens - hard - https://leetcode.com/problems/n-queens/
-![Image of nqueens](imgs/nqueens.jpg)
-###Solution - Backtrack - TC: O(N!), SC: O(N)
-###Refer: https://leetcode-cn.com/problems/n-queens/solution/nhuang-hou-jing-dian-hui-su-suan-fa-tu-wen-xiang-j/
-```
-Code:
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
+
+public class Solution06 {
+
+
+    public static void main(String[] args) {
+        Solution06 solution = new Solution06();
+//        System.out.println(solution.letterCombinations("23"));
+    }
+
     public List<List<String>> solveNQueens(int n) {
         //init board
         char[][] chess = new char[n][n];
@@ -62,4 +68,9 @@ Code:
         }
         return path;
     }
-```
+
+
+
+
+
+}
