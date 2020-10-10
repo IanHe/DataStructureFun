@@ -27,3 +27,14 @@ Third: write down: DP Equation
 ![Image of count_the_paths_dp_final](imgs/count_the_paths_dp_final.jpg)
 ### DP Summary
 ![Image of dp_summary](imgs/dp_summary.jpg)
+<br></br>
+<br></br>
+### Leetcode:
+####53. Maximum Subarray - easy - https://leetcode.com/problems/maximum-subarray/
+####62. Unique Paths - medium - https://leetcode.com/problems/unique-paths/
+####120. Triangle - medium - https://leetcode.com/problems/triangle/
+####121. Best Time to Buy and Sell Stock - easy - https://leetcode.com/problems/best-time-to-buy-and-sell-stock/
+####152. Maximum Product Subarray - medium - https://leetcode.com/problems/maximum-product-subarray/
+####198. House Robber - easy - https://leetcode.com/problems/house-robber/
+####322. Coin Change - medium - https://leetcode.com/problems/coin-change/
+####1143. Longest Common Subsequence - medium - http://leetcode.com/problems/longest-common-subsequence/

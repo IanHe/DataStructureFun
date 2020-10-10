@@ -20,3 +20,12 @@
 <br></br>
 ### When to use greedy algorithm
 ![Image of greedy_when_to_use](imgs/greedy_when_to_use.jpg)
+<br></br>
+<br></br>
+### Leetcode:
+####322. Coin Change - medium - https://leetcode.com/problems/coin-change/
+####55. Jump Game - medium - https://leetcode.com/problems/jump-game/
+####122. Best Time to Buy and Sell Stock II - easy - https://leetcode.com/problems/best-time-to-buy-and-sell-stock-ii/
+####455. Assign Cookies - easy - https://leetcode.com/problems/assign-cookies/
+####874. Walking Robot Simulation - easy - https://leetcode.com/problems/walking-robot-simulation/
+####45. Jump Game II - hard - https://leetcode.com/problems/jump-game-ii/
