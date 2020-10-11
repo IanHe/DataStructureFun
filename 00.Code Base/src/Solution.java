@@ -1,29 +1,21 @@
-import java.util.Arrays;
-
 public class Solution {
     public static void main(String[] args) {
         Solution solution = new Solution();
-        System.out.println(solution.rob(new int[]{1,2,3,1}));
+        System.out.println(solution.maxProfit(new int[]{1,2,3,4,5}));
     }
 
-
-
-    public int rob(int[] nums){
-        if(nums==null || nums.length==0) return 0;
-        if(nums.length == 1) return nums[0];
-        int rob1 = _rob(Arrays.copyOfRange(nums, 0, nums.length-1));
-        int rob2 = _rob(Arrays.copyOfRange(nums, 1, nums.length));
-        return Math.max(rob1, rob2);
-    }
-
-    // when houses are lined in a line
-    private int _rob(int[] nums) {
-        int pre = 0, cur = 0, tmp;
-        for (int num : nums) {
-            tmp = cur;
-            cur = Math.max(pre + num, cur);
-            pre = tmp;
+    //DP function:
+    // 0: not hold the stock, 1: hold the stock
+    // F(n)(0) = max(F(n-1)(0), F(n-1)(1) + a(n))
+    // F(n)(1) = max(F(n-1)(1), F(n-1)(0) - a(n))
+    public int maxProfit(int[] prices) {
+        if (prices == null || prices.length <= 1) return 0;
+        int dp0 = 0, dp1 = -prices[0];
+        for (int i = 1; i < prices.length; i++) {
+            dp0 = Math.max(dp0, dp1 + prices[i]);
+            // because you can only buy the stock at most once, buy => -prices[i]
+            dp1 = Math.max(dp1, dp0 - prices[i]);
         }
-        return cur;
+        return dp0;
     }
 }

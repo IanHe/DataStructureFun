@@ -47,3 +47,5 @@ Third: write down: DP Equation
 ####198. House Robber - easy - https://leetcode.com/problems/house-robber/
 ####213. House Robber II - medium - https://leetcode.com/problems/house-robber-ii/
 ####121. Best Time to Buy and Sell Stock - easy - https://leetcode.com/problems/best-time-to-buy-and-sell-stock/
+####122. Best Time to Buy and Sell Stock II - easy - https://leetcode.com/problems/best-time-to-buy-and-sell-stock-ii/
+####123. Best Time to Buy and Sell Stock III - hard - https://leetcode.com/problems/best-time-to-buy-and-sell-stock-iii/
