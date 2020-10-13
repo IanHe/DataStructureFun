@@ -22,12 +22,9 @@
 <br></br>
 ##Disjoint Sets(并查集) - Group or not?(组团，配对的问题)
 ![Image of disjoint_sets](imgs/disjoint_sets.jpg)
-##Example - friends-circles, number-of-islands
-####547. Friend Circles - medium - https://leetcode.com/problems/friend-circles/
-####200. Number of Islands - medium - https://leetcode.com/problems/number-of-islands/
+##Example - 547. Friend Circles, 200. Number of Islands
 ####0, 1, 2 represent 3 persons, f(0, 1) = 1 => 0 and 1 is in the same set
 ![Image of find_union_example](imgs/find_union_example.jpg)
-####https://leetcode-cn.com/problems/surrounded-regions/
 <br></br>
 ###Initialize each element with parent element point to itself -> the node itself is the parent
 ![Image of disjoint_sets_init](imgs/disjoint_sets_init.jpg)
@@ -69,3 +66,8 @@ Code Sample:
         }
     }
 ```
+<br></br>
+###Leetcode
+####547. Friend Circles - medium - https://leetcode.com/problems/friend-circles/
+####200. Number of Islands - medium - https://leetcode.com/problems/number-of-islands/
+####130. Surrounded Regions - medium - https://leetcode.com/problems/surrounded-regions/
