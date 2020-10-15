@@ -25,7 +25,10 @@
 ###BFS
 ![Image of bfs](imgs/bfs.jpg)
 ###Two-Ended BFS
-![Image of bfs](imgs/bfs.jpg)
+![Image of two_end_bfs](imgs/two_end_bfs.jpg)
+###Leetcode
+####127. Word Ladder - medium - https://leetcode.com/problems/word-ladder/
+####126. Word Ladder II - hard - https://leetcode.com/problems/word-ladder-ii/
 <br></br>
 <br></br>
 ###Heuristic Search(A*) - 启发式搜索

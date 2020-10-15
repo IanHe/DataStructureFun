@@ -15,3 +15,12 @@
 ![Image of bfs_vs_dfs](imgs/bfs_vs_dfs.jpg)
 ###BFS Code
 ![Image of bfs_code](imgs/bfs_code.jpg)
+<br></br>
+###Leetcode:
+####102
+####127
+####126
+####200
+####433
+####515
+####529
