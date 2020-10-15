@@ -17,6 +17,9 @@
 ###Leetcode
 ####70. Climbing Stairs - easy - https://leetcode.com/problems/climbing-stairs/
 ####22. Generate Parentheses - Medium -- https://leetcode.com/problems/generate-parentheses/
+####51. N-Queens - hard - https://leetcode.com/problems/n-queens/
+####36. Valid Sudoku - medium - https://leetcode.com/problems/valid-sudoku/
+####37. Sudoku Solver - hard - https://leetcode.com/problems/sudoku-solver/
 <br></br>
 <br></br>
 ###BFS
