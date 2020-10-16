@@ -34,15 +34,16 @@
 ###Heuristic Search(A*) - 启发式搜索
 ####BFS can be improved 
 ![Image of bfs_improve](imgs/bfs_improve.jpg)
+###Heuristic Function(or Priority Function)
 ####Improve BFS by using something more intelligent - Priority Queue(with priority function)
 ![Image of bfs_priority_queue](imgs/bfs_priority_queue.jpg)
 ![Image of priority_function](imgs/priority_function.jpg)
 ####Example: Shorted Path - (Evaluation Function: e.g: Manhattan Distance)
 ![Image of shortest_path](imgs/shortest_path.jpg)
+####About Heuristic Function, refer: https://dataaspirant.com/five-most-popular-similarity-measures-implementation-in-python/
+####Refer: https://zxi.mytechroad.com/blog/searching/8-puzzles-bidirectional-astar-vs-bidirectional-bfs/
 <br></br>
 ###Leetcode
-####36. Valid Sudoku - medium - https://leetcode.com/problems/valid-sudoku/
-####37. Sudoku Solver - hard - https://leetcode.com/problems/sudoku-solver/
-####127. Word Ladder - medium - https://leetcode-cn.com/problems/word-ladder/
-####773. Sliding Puzzle - hard - https://leetcode.com/problems/sliding-puzzle/
 ####1091. Shortest Path in Binary Matrix - medium -  https://leetcode.com/problems/shortest-path-in-binary-matrix/
+####773. Sliding Puzzle - hard - https://leetcode.com/problems/sliding-puzzle/
+

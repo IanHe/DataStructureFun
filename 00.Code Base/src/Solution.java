@@ -1,124 +1,59 @@
-import java.util.*;
+import java.util.Deque;
+import java.util.HashSet;
+import java.util.LinkedList;
+import java.util.Set;
 
 public class Solution {
     public static void main(String[] args) {
         Solution solution = new Solution();
-
+        int[][] grid = new int[][]{{0, 1}, {1, 0}};
     }
 
-    public List<List<String>> findLadders(String beginWord, String endWord, List<String> wordList) {
-        // search in set is O(1) faster than list
-        List<List<String>> res = new ArrayList<>();
-        Set<String> wordSet = new HashSet<>(wordList);
-        if (wordSet.size() == 0 || !wordSet.contains(endWord)) {
-            return res;
-        }
-        // step 1: use bfs find the shortest path, and record all successors
-        // an Map.Entry<String, Set<String>> is a word can transform to other words in one step change
-        Map<String, Set<String>> successors = new HashMap<>();
-        boolean found = bfs(beginWord, endWord, wordSet, successors);
-        if (!found) {
-            return res;
-        }
-        // step 2: based on the successors, use dfs_backtrack to find all shortest path
-        Deque<String> path = new ArrayDeque<>();
-        path.addLast(beginWord);
-        dfs(beginWord, endWord, successors, path, res);
-        return res;
-    }
+    public int slidingPuzzle(int[][] board) {
+        int[][] dir = new int[][]{{1, 3}, {0, 2, 4}, {1, 5}, {0, 4}, {1, 3, 5}, {2, 4}};
 
-    // two-end bfs
-    private boolean bfs(String beginWord, String endWord, Set<String> wordSet, Map<String, Set<String>> successors) {
-        // record all visited words
+        String target = "123456";
+        String start = boardToStr(board);
+
         Set<String> visited = new HashSet<>();
-        visited.add(beginWord);
-        visited.add(endWord);
+        Deque<String> deque = new LinkedList<>();
+        deque.addLast(start);
+        visited.add(start);
+        int step = 1;
 
-        Set<String> beginVisited = new HashSet<>();
-        beginVisited.add(beginWord);
-        Set<String> endVisited = new HashSet<>();
-        endVisited.add(endWord);
-
-        int wordLen = beginWord.length();
-        boolean forward = true; // direction
-        boolean found = false;
-
-        while (!beginVisited.isEmpty() && !endVisited.isEmpty()) {
-            // switch beginVisited and endVisited
-            if (beginVisited.size() > endVisited.size()) {
-                Set<String> temp = beginVisited;
-                beginVisited = endVisited;
-                endVisited = temp;
-
-                // switch direction, for the purpose using successors
-                forward = !forward;
-            }
-            Set<String> nextLevelVisited = new HashSet<>();
-
-            for (String currentWord : beginVisited) {
-                char[] charArray = currentWord.toCharArray();
-                for (int i = 0; i < wordLen; i++) {
-                    char originChar = charArray[i];
-                    for (char j = 'a'; j <= 'z'; j++) {
-                        if (charArray[i] == j) {
-                            continue;
-                        }
-                        charArray[i] = j;
-                        String nextWord = new String(charArray);
-                        if (wordSet.contains(nextWord)) {
-                            if (endVisited.contains(nextWord)) {
-                                found = true;
-                                // add current transformation into successors
-                                addToSuccessors(successors, forward, currentWord, nextWord);
-                            }
-
-                            if (!visited.contains(nextWord)) {
-                                nextLevelVisited.add(nextWord);
-                                // add current transformation into successors
-                                addToSuccessors(successors, forward, currentWord, nextWord);
-                            }
-                        }
+        while (!deque.isEmpty()) {
+            int size = deque.size();
+            for (int i = 0; i < size; i++) {
+                String str = deque.pollFirst();
+                if (target.equals(str)) return step;
+                int pos = str.indexOf('0');
+                int[] nextMoves = dir[pos];
+                for (int nextPos : nextMoves) {
+                    String newStr = switchChar(str, pos, nextPos);
+                    if (!visited.contains(newStr)) {
+                        visited.add(newStr);
+                        deque.addLast(newStr);
                     }
-                    charArray[i] = originChar;
                 }
             }
-            beginVisited = nextLevelVisited;
-            visited.addAll(nextLevelVisited);
-            if (found) {
-                break;
-            }
+            step++;
         }
-        return found;
+        return -1;
     }
 
-    // continue traverse beginWord until it meets endWord
-    private void dfs(String beginWord, String endWord, Map<String, Set<String>> successors, Deque<String> path, List<List<String>> res) {
-        if (beginWord.equals(endWord)) {
-            res.add(new ArrayList<>(path));
-            return;
-        }
-
-        if (!successors.containsKey(beginWord)) {
-            return;
-        }
-
-        Set<String> successorWords = successors.get(beginWord);
-        for (String successor : successorWords) {
-            path.addLast(successor);
-            dfs(successor, endWord, successors, path, res);
-            path.removeLast();
-        }
+    private String switchChar(String str, int pos1, int pos2) {
+        char[] chs = str.toCharArray();
+        char tmp = chs[pos1];
+        chs[pos1] = chs[pos2];
+        chs[pos2] = tmp;
+        return String.valueOf(chs);
     }
 
-    private void addToSuccessors(Map<String, Set<String>> successors, boolean forward, String currentWord, String nextWord) {
-        if (!forward) {
-            String temp = currentWord;
-            currentWord = nextWord;
-            nextWord = temp;
+    private String boardToStr(int[][] board) {
+        StringBuilder sb = new StringBuilder();
+        for (int i = 0; i < 6; i++) {
+            sb.append(board[i / 3][i % 3]);
         }
-
-        successors.computeIfAbsent(currentWord, a -> new HashSet<>());
-        successors.get(currentWord).add(nextWord);
+        return sb.toString();
     }
-
 }
