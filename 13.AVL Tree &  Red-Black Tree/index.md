@@ -36,12 +36,13 @@ def postorder(self, root):
 ![Image of binary_search_tree_1](imgs/binary_search_tree_1.jpg)
 ####When binary search tree is not correct inserted(unbalanced), it will become a linked list
 ![Image of linked_list](imgs/linked_list.jpg)
-###Balanced Binary Search Tree
+###Self-balancing Binary Search Tree: 2-3 Tree, AVL Tree, Red-Black Tree, B-Tree ...
 ![Image of balanced_binary_search_tree](imgs/balanced_binary_search_tree.jpg)
 <br></br>
 <br></br>
-###AVL Tree
-![Image of avl_tree](imgs/avl_tree.jpg)
+###AVL Tree - the search performance depends on the depth of the tree => balance factor = depth difference
+![Image of avl_tree](imgs/avl_tree.jpg)<br></br>
+###E.g: the root node balance factor = left height - right height = +1
 ![Image of avl_balance_factor](imgs/avl_balance_factor.jpg)
 ####E.g: add 3 into the AVL tree -> unbalanced -> have to rotate the tree to make balance
 ![Image of add_avl_tree](imgs/add_avl_tree.jpg)
@@ -50,12 +51,12 @@ def postorder(self, root):
 ![Image of add_avl_tree_3](imgs/add_avl_tree_3.jpg)
 ####Rotate the tree - be careful about how sub-node moves
 ![Image of rotate_tree](imgs/rotate_tree.jpg)
-###AVL Summary
+###AVL Summary - drawback: High Maintenance => introduce Approximately-balanced binary tree, less maintenance
 ![Image of avl_summary](imgs/avl_summary.jpg)
 <br></br>
 <br></br>
-###Black-Red Tree(near-balanced binary search tree)
+###Black-Red Tree(Approximately-balanced binary search tree)
 ![Image of black-red_tree](imgs/black-red_tree.jpg)
 ![Image of black-red_tree_1](imgs/black-red_tree_1.jpg)
 ###AVL vs Black-End Tree
-![Image of avl_vs_black-end](imgs/avl_vs_black-end.jpg)
+![Image of avl_vs_black-red](imgs/avl_vs_black-red.jpg)
