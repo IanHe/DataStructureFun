@@ -1,46 +1,86 @@
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
+import java.util.HashMap;
+import java.util.Map;
 
 public class Solution {
     public static void main(String[] args) {
         Solution solution = new Solution();
     }
 
-    public List<List<String>> solveNQueens(int n) {
-        int[] queens = new int[n];
-        Arrays.fill(queens, -1);
-        List<List<String>> solutions = new ArrayList<List<String>>();
-        solve(solutions, queens, n, 0, 0, 0, 0);
-        return solutions;
+
+}
+
+class LRUCache {
+    private Map<Integer, Node> cache = new HashMap<>();
+    private int size, capacity;
+
+    private Node leftBound, rightBound;
+
+    public LRUCache(int capacity) {
+        this.capacity = capacity;
+        this.leftBound = new Node();
+        this.rightBound = new Node();
+        this.leftBound.next = rightBound;
+        this.rightBound.prev = this.leftBound;
     }
 
-    public void solve(List<List<String>> solutions, int[] queens, int n, int row, int columns, int diagonals1, int diagonals2) {
-        if (row == n) {
-            List<String> board = generateBoard(queens, n);
-            solutions.add(board);
-        } else {
-            int availablePositions = ((1 << n) - 1) & (~(columns | diagonals1 | diagonals2));
-            while (availablePositions != 0) {
-                int position = availablePositions & (-availablePositions);
-                availablePositions = availablePositions & (availablePositions - 1);
-                int column = Integer.bitCount(position - 1);
-                queens[row] = column;
-                solve(solutions, queens, n, row + 1, columns | position, (diagonals1 | position) << 1, (diagonals2 | position) >> 1);
-                queens[row] = -1;
+    public int get(int key) {
+        Node node = cache.get(key);
+        if (node == null) return -1;
+        moveToHead(node);
+        return node.value;
+    }
+
+    public void put(int key, int value) {
+        Node node = cache.get(key);
+        if (node == null) {
+            Node newNode = new Node(key, value);
+            cache.put(key, newNode);
+            addToHead(newNode);
+            ++size;
+            if (size > capacity) {
+                Node tail = removeTail();
+                cache.remove(tail.key);
+                --size;
             }
+        } else {
+            node.value = value;
+            moveToHead(node);
         }
     }
 
-    public List<String> generateBoard(int[] queens, int n) {
-        List<String> board = new ArrayList<String>();
-        for (int i = 0; i < n; i++) {
-            char[] row = new char[n];
-            Arrays.fill(row, '.');
-            row[queens[i]] = 'Q';
-            board.add(new String(row));
-        }
-        return board;
+    private void moveToHead(Node node) {
+        removeNode(node);
+        addToHead(node);
     }
 
+    private void addToHead(Node node) {
+        node.prev = this.leftBound;
+        node.next = this.leftBound.next;
+        this.leftBound.next = node;
+        node.next.prev = node;
+    }
+
+    private Node removeTail() {
+        Node res = this.rightBound.prev;
+        removeNode(res);
+        return res;
+    }
+
+    private void removeNode(Node node) {
+        node.prev.next = node.next;
+        node.next.prev = node.prev;
+    }
+
+    class Node {
+        int key, value;
+        Node prev, next;
+
+        public Node() {
+        }
+
+        public Node(int key, int value) {
+            this.key = key;
+            this.value = value;
+        }
+    }
 }
