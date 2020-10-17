@@ -26,6 +26,88 @@
 ![Image of /lru_cache_insert](imgs//lru_cache_insert.jpg)
 ###Cache Replacement Policies: FIFO, LIFO, LRU ...; refer: https://en.wikipedia.org/wiki/Cache_replacement_policies
 ![Image of /lru_strategy](imgs//lru_strategy.jpg)
+###Simple LRU implementation:
+```
+class LRUCache {
+    private Map<Integer, Node> cache = new HashMap<>();
+    private int size, capacity;
+    // create boundary node, boundaryLeft.next will be head node, boundaryRight.prev will be tail node
+    private Node boundaryLeft, boundaryRight;
+
+    public LRUCache(int capacity) {
+        this.size = 0;
+        this.capacity = capacity;
+        //false head, tail
+        boundaryLeft = new Node();
+        boundaryRight = new Node();
+        boundaryLeft.next = boundaryRight;
+        boundaryRight.prev = boundaryLeft;
+    }
+
+    public int get(int key) {
+        Node node = cache.get(key);
+        if (node == null) return -1;
+        //because node is being searched, move the node to head
+        moveToHead(node);
+        return node.value;
+    }
+
+    public void put(int key, int value) {
+        Node node = cache.get(key);
+        if (node == null) {
+            Node newNode = new Node(key, value);
+            cache.put(key, newNode);
+            addToHead(newNode);
+            ++size;
+            if (size > capacity) {
+                Node tail = removeTail();
+                cache.remove(tail.key);
+                --size;
+            }
+        } else {
+            node.value = value;
+            moveToHead(node);
+        }
+    }
+
+    private void moveToHead(Node node) {
+        removeNode(node);
+        addToHead(node);
+    }
+
+    private void addToHead(Node node) {
+        node.prev = boundaryLeft;
+        node.next = boundaryLeft.next;
+        boundaryLeft.next.prev = node;
+        boundaryLeft.next = node;
+    }
+
+    private void removeNode(Node node) {
+        node.prev.next = node.next;
+        node.next.prev = node.prev;
+    }
+
+    private Node removeTail() {
+        //tails if false node, so the real tail the tail.prev
+        Node res = boundaryRight.prev;
+        removeNode(res);
+        return res;
+    }
+
+    class Node {
+        int key, value;
+        Node prev, next;
+
+        public Node() {
+        }
+
+        public Node(int key, int value) {
+            this.key = key;
+            this.value = value;
+        }
+    }
+}
+```
 <br></br>
 ###Leetcode
 ####146. LRU Cache - medium - https://leetcode.com/problems/lru-cache/
