@@ -38,4 +38,5 @@
 ####242. Valid Anagram - easy - https://leetcode.com/problems/valid-anagram/
 ####https://leetcode-cn.com/problems/design-a-leaderboard/
 ####56. Merge Intervals - medium - https://leetcode.com/problems/merge-intervals/
+####剑指 Offer 51. 数组中的逆序对 - hard - https://leetcode-cn.com/problems/shu-zu-zhong-de-ni-xu-dui-lcof/
 ####493. Reverse Pairs - hard - https://leetcode.com/problems/reverse-pairs/
