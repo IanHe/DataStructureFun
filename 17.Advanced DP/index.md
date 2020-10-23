@@ -28,3 +28,7 @@
 ##Advanced DP
 ![Image of /advanced_dp](imgs//advanced_dp.jpg)
 ![Image of /dp_climbing](imgs//dp_climbing.jpg)
+<br></br>
+###Leetcode
+####746. Min Cost Climbing Stairs - easy - https://leetcode.com/problems/min-cost-climbing-stairs/
+####72. Edit Distance - hard - https://leetcode.com/problems/edit-distance/
