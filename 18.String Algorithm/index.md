@@ -20,3 +20,6 @@
 ###Leetcode- String Advanced
 ####72. Edit Distance - hard - https://leetcode.com/problems/edit-distance/
 ####1143. Longest Common Subsequence - medium - http://leetcode.com/problems/longest-common-subsequence/
+####5. Longest Palindromic Substring - medium - https://leetcode.com/problems/longest-palindromic-substring/
+####10. Regular Expression Matching - hard - https://leetcode.com/problems/regular-expression-matching/
+####115. Distinct Subsequences - hard - https://leetcode.com/problems/distinct-subsequences/
