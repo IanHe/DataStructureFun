@@ -1,12 +1,12 @@
-#Arrays LinkedList & SkipList
+##Arrays LinkedList & SkipList
 <br></br>
-##Look into java source code: ArrayList, LinkedList
+###Look into java source code: ArrayList, LinkedList
 <br></br>
-##Array - Search(Time Complexity: O(1)) - PC create memory address for each item in the array, memory controller can easily visit item by memory address
+###Array - Search(TC: O(1)) - PC create memory address for each item in the array, memory controller can easily visit item by memory address
 ![Image of /array](imgs//array.jpg)
-##Array - Insert(TC: O(1) -> O(n) => O(n)) - insert D:  move E, F, G down first, then insert D
+###Array - Insert(TC: O(1)...O(n) => O(n)) - insert D:  move E, F, G down first, then insert D
 ![Image of /array_1](imgs//array_1.jpg)
-##Array - Delete(TC: O(1) -> O(n) => O(n)) - delete Z:  delete Z first, then move E, F, G Up
+###Array - Delete(TC: O(1)...O(n) => O(n)) - delete Z:  delete Z first, then move E, F, G Up
 ![Image of /array_2](imgs//array_2.jpg)
 ```
 Source Code: ArrayList.java
@@ -58,7 +58,7 @@ Source Code: ArrayList.java
     }
 ```
 <br></br>
-##LinkedList - element normally defined by Class
+##LinkedList - node normally defined by Class Object
 ![Image of /linkedlist](imgs//linkedlist.jpg)
 ```
 Source Code: LinkedList.java
@@ -96,23 +96,31 @@ public class LinkedList<E>
 ... more
 }
 ```
-##LinkedList - Insert(TC: O(1))
+###LinkedList - Insert (TC: O(1))
 ![Image of /linkedlist_1](imgs//linkedlist_1.jpg)
-##LinkedList - Delete(TC: O(1))
+###LinkedList - Delete (TC: O(1))
 ![Image of /linkedlist_2](imgs//linkedlist_2.jpg)
-##LinkedList - Search(TC: O(1) -> O(n) => O(n))
-##LinkedList - TC Summary:
+###LinkedList - Search(TC: O(1)...O(n) => O(n))
+###LinkedList - TC Summary:
 ![Image of /linkedlist_3](imgs//linkedlist_3.jpg)
 <br></br>
-##SkipList - (Improving LinkedList: 升维思想 + 空降换时间) - Add layers of indexing
+###SkipList - (Improving LinkedList: 升维思想 + 空降换时间) - Add layers of indexing
 ![Image of /skiplist](imgs//skiplist.jpg)
-##SkipList - normally add log(2n) indexing
+###SkipList - normally add log(2n) indexing
 ![Image of /skiplist_1](imgs//skiplist_1.jpg)
-##SkipList - (TC: O(logN))
+###SkipList - (TC: O(logN))
 ![Image of /skiplist_2](imgs//skiplist_2.jpg)
 ![Image of /skiplist_3](imgs//skiplist_3.jpg)
-##SkipList - (SC: O(n))
+###SkipList - (SC: O(n))
 ![Image of /skiplist_4](imgs//skiplist_4.jpg)
 <br></br>
-##Industry
+###Industry
 ![Image of /industry](imgs//industry.jpg)
+<br></br>
+###LeetCode
+####11. Container With Most Water - medium - https://leetcode.com/problems/container-with-most-water/
+####283. Move Zeroes - easy - https://leetcode.com/problems/move-zeroes/
+####70. Climbing Stairs - easy - https://leetcode.com/problems/climbing-stairs/
+####15. 3Sum - medium - https://leetcode.com/problems/3sum/
+####206. Reverse Linked List - easy - https://leetcode.com/problems/reverse-linked-list/
+####24. Swap Nodes in Pairs - medium - https://leetcode.com/problems/swap-nodes-in-pairs/

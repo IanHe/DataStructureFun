@@ -1,31 +1,53 @@
 public class Solution {
     public static void main(String[] args) {
         Solution solution = new Solution();
-        System.out.println(solution.numDistinct("babgbag", "bag"));
+        ListNode node1 = new ListNode(1);
+        ListNode node2 = new ListNode(2);
+        ListNode node3 = new ListNode(3);
+        ListNode node4 = new ListNode(4);
+        node1.next = node2;
+        node2.next = node3;
+        node3.next = node4;
+        solution.printNode(solution.swapPairs(node1));
     }
 
 
-    public int numDistinct(String s, String t) {
-        //s为空的情况
-        if (s == null || s.length() == 0) return 0;
-        //t为空的情况
-        if (t == null || t.length() == 0) return s.length();
-
-        int m = t.length() + 1, n = s.length() + 1;
-        int[][] dp = new int[m][n];
-        //数组第一行赋值为1
-        for (int i = 0; i < n; i++)
-            dp[0][i] = 1;
-        for (int i = 1; i < m; i++) {
-            for (int j = i; j < n; j++) {
-                char a = t.charAt(i - 1), b = s.charAt(j - 1);
-                if (a == b)
-                    dp[i][j] = dp[i][j - 1] + dp[i - 1][j - 1];
-                else
-                    dp[i][j] = dp[i][j - 1];
-            }
+    public ListNode swapPairs(ListNode head) {
+        if (head == null || head.next == null) return head;
+        ListNode newHead = head.next, pre = null;
+        while (head != null && head.next != null) {
+            ListNode next = head.next;
+            head.next = next.next;
+            next.next = head;
+            if(pre !=null) pre.next = next;
+            pre = head;
+            head = head.next;
         }
-        return dp[m - 1][n - 1];
+        return newHead;
+    }
+
+    private void printNode(ListNode head) {
+        if (head == null) return;
+        System.out.print(head.val + ", ");
+        printNode(head.next);
+    }
+
+
+    static class ListNode {
+        int val;
+        ListNode next;
+
+        ListNode() {
+        }
+
+        ListNode(int val) {
+            this.val = val;
+        }
+
+        ListNode(int val, ListNode next) {
+            this.val = val;
+            this.next = next;
+        }
     }
 
 
