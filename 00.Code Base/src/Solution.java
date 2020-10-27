@@ -8,22 +8,24 @@ public class Solution {
         node1.next = node2;
         node2.next = node3;
         node3.next = node4;
-        solution.printNode(solution.swapPairs(node1));
+//        solution.printNode(solution.swapPairs(node1));
     }
 
-
-    public ListNode swapPairs(ListNode head) {
-        if (head == null || head.next == null) return head;
-        ListNode newHead = head.next, pre = null;
-        while (head != null && head.next != null) {
-            ListNode next = head.next;
-            head.next = next.next;
-            next.next = head;
-            if(pre !=null) pre.next = next;
-            pre = head;
-            head = head.next;
+    public ListNode detectCycle(ListNode head) {
+        if (head == null || head.next == null) return null;
+        ListNode slow = head, fast = head;
+        while (true) {
+            if (fast == null || fast.next == null) return null; // no loop
+            slow = slow.next;
+            fast = fast.next.next;
+            if(fast == slow) break;
         }
-        return newHead;
+        fast = head;
+        while (fast != slow) {
+            slow = slow.next;
+            fast = fast.next;
+        }
+        return fast;
     }
 
     private void printNode(ListNode head) {
