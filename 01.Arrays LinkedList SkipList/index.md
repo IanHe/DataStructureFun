@@ -126,3 +126,5 @@ public class LinkedList<E>
 ####24. Swap Nodes in Pairs - medium - https://leetcode.com/problems/swap-nodes-in-pairs/
 ####141. Linked List Cycle - easy - https://leetcode.com/problems/linked-list-cycle/
 ####142. Linked List Cycle II - medium - https://leetcode.com/problems/linked-list-cycle-ii/
+####26. Remove Duplicates from Sorted Array - easy - https://leetcode.com/problems/remove-duplicates-from-sorted-array/
+####189. Rotate Array - easy - https://leetcode.com/problems/rotate-array/

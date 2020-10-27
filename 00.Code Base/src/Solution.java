@@ -3,30 +3,38 @@ public class Solution {
         Solution solution = new Solution();
         ListNode node1 = new ListNode(1);
         ListNode node2 = new ListNode(2);
-        ListNode node3 = new ListNode(3);
         ListNode node4 = new ListNode(4);
+        ListNode node5 = new ListNode(5);
+
         node1.next = node2;
-        node2.next = node3;
-        node3.next = node4;
-//        solution.printNode(solution.swapPairs(node1));
+        node2.next = node4;
+
+        ListNode head = solution.mergeTwoLists(node1, node5);
+        solution.printNode(head);
     }
 
-    public ListNode detectCycle(ListNode head) {
-        if (head == null || head.next == null) return null;
-        ListNode slow = head, fast = head;
-        while (true) {
-            if (fast == null || fast.next == null) return null; // no loop
-            slow = slow.next;
-            fast = fast.next.next;
-            if(fast == slow) break;
+    public ListNode mergeTwoLists(ListNode l1, ListNode l2) {
+        ListNode prehead = new ListNode(-1);
+
+        ListNode prev = prehead;
+        while (l1 != null && l2 != null) {
+            if (l1.val <= l2.val) {
+                prev.next = l1;
+                l1 = l1.next;
+            } else {
+                prev.next = l2;
+                l2 = l2.next;
+            }
+            prev = prev.next;
         }
-        fast = head;
-        while (fast != slow) {
-            slow = slow.next;
-            fast = fast.next;
-        }
-        return fast;
+
+        // 合并后 l1 和 l2 最多只有一个还未被合并完，我们直接将链表末尾指向未合并完的链表即可
+        prev.next = l1 == null ? l2 : l1;
+
+        return prehead.next;
     }
+
+
 
     private void printNode(ListNode head) {
         if (head == null) return;
