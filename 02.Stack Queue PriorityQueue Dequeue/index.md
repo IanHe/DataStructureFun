@@ -1,6 +1,6 @@
 #Stack, Queue, Dequeue, Priority Queue
 <br></br>
-###Stack(class LIFO): Add/Delete: O(1), Search: O(N)
+###Stack(class) - LIFO: Add/Delete: O(1), Search: O(N)
 ```
  * A more complete and consistent set of LIFO stack operations is
  * provided by the {@link Deque} interface and its implementations, which
@@ -50,7 +50,7 @@ class Stack<E> extends Vector<E> {
     }
 }
 ```
-###Queue(interface FIFO): Add/Delete: O(1), Search: O(N)
+###Queue(interface) - FIFO: Add/Delete: O(1), Search: O(N)
 ```
 Interface Queue<E>
 Known Implementing Classes: LinkedList, ArrayDeque(Deque), PriorityQueue
@@ -75,7 +75,7 @@ E 	        peek() 	    Retrieves, but does not remove, the head of this queue, o
 E 	        poll() 	    Retrieves and removes the head of this queue, or returns null if this queue is empty.
 E 	        remove() 	Retrieves and removes the head of this queue.
 ```
-###Dequeue(interface, Support both FIFO, LIFO): Add/Delete: O(1), Search: O(N)
+###Dequeue(interface) - Support both FIFO, LIFO: Add/Delete: O(1), Search: O(N)
 ```
 Interface Deque<E>
 Implementing Classes: ArrayDeque, LinkedList
@@ -83,8 +83,8 @@ Implementing Classes: ArrayDeque, LinkedList
 ![Image of /deque](imgs//deque.jpg)
 ###PriorityQueue(interface)
 ####-Get element out based on Priority
-####-Add: O(1), Delete: O(logN), Search: O(logN)-based on priority
-####-Bottom implementation can be different: heap, bst(binary search tree), treap
+####-Add: O(1), Delete: O(logN), Search: O(logN) - based on priority
+####-The Implementation can be different: heap, bst(binary search tree), treap
 ```
 Class PriorityQueue<E>
 
@@ -100,3 +100,8 @@ methods refer to Queue
 <br></br>
 ##Data Structure - TC
 ![Image of /data_structure_tc](imgs/data_structure_tc.jpg)
+<br></br>
+###LeetCode
+####20. Valid Parentheses - easy - https://leetcode.com/problems/valid-parentheses/
+####155. Min Stack - easy - https://leetcode.com/problems/min-stack/
+####84. Largest Rectangle in Histogram - hard - https://leetcode.com/problems/largest-rectangle-in-histogram/
