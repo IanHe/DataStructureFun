@@ -9,31 +9,21 @@ public class Solution {
         node1.next = node2;
         node2.next = node4;
 
-        ListNode head = solution.mergeTwoLists(node1, node5);
-        solution.printNode(head);
+        int[] nums1 = new int[]{1, 2, 3, 0, 0, 0};
+        int[] nums2 = new int[]{2, 5, 6};
     }
 
-    public ListNode mergeTwoLists(ListNode l1, ListNode l2) {
-        ListNode prehead = new ListNode(-1);
-
-        ListNode prev = prehead;
-        while (l1 != null && l2 != null) {
-            if (l1.val <= l2.val) {
-                prev.next = l1;
-                l1 = l1.next;
-            } else {
-                prev.next = l2;
-                l2 = l2.next;
-            }
-            prev = prev.next;
+    public int[] plusOne(int[] digits) {
+        for (int i = digits.length - 1; i >= 0; i--) {
+            digits[i]++;
+            digits[i] %= 10;
+            if (digits[i] != 0) return digits;
         }
-
-        // 合并后 l1 和 l2 最多只有一个还未被合并完，我们直接将链表末尾指向未合并完的链表即可
-        prev.next = l1 == null ? l2 : l1;
-
-        return prehead.next;
+        //digits位数进了一位
+        digits = new int[digits.length + 1];
+        digits[0] = 1;
+        return digits;
     }
-
 
 
     private void printNode(ListNode head) {
