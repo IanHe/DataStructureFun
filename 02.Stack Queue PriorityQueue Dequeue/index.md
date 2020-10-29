@@ -106,3 +106,5 @@ methods refer to Queue
 ####155. Min Stack - easy - https://leetcode.com/problems/min-stack/
 ####84. Largest Rectangle in Histogram - hard - https://leetcode.com/problems/largest-rectangle-in-histogram/
 ####239. Sliding Window Maximum - hard - https://leetcode.com/problems/sliding-window-maximum/
+####641. Design Circular Deque - medium - https://leetcode.com/problems/design-circular-deque/
+####42. Trapping Rain Water - hard - https://leetcode.com/problems/trapping-rain-water/
