@@ -12,3 +12,8 @@
 ![Image of /hash_table_4](imgs//hash_table_4.jpg)
 ###Java: HashSet internally use HashMap
 ![Image of /hash_table_4](imgs//hash_table_5.jpg)
+<br></br>
+###Leetcode: 
+####242. Valid Anagram - easy - https://leetcode.com/problems/valid-anagram/
+####49. Group Anagrams - medium - https://leetcode.com/problems/group-anagrams/
+####1. Two Sum - easy - https://leetcode.com/problems/two-sum/
