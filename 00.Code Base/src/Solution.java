@@ -1,20 +1,49 @@
-import java.util.*;
+import java.util.ArrayList;
+import java.util.LinkedList;
+import java.util.List;
 
 public class Solution {
     public static void main(String[] args) {
         Solution solution = new Solution();
     }
 
-    public int[] twoSum(int[] nums, int target) {
-        // store nums[i] -> i
-        Map<Integer, Integer> map = new HashMap<>();
-        for (int i = 0; i < nums.length; i++) {
-            int value = target - nums[i];
-            if (map.containsKey(value)) {
-                return new int[]{i, map.get(value)};
+    public List<List<Integer>> levelOrder(Node root) {
+        List<List<Integer>> list = new ArrayList<>();
+        if (root == null) return list;
+        LinkedList<Node> deque = new LinkedList<>();
+        deque.add(root);
+        while (!deque.isEmpty()) {
+            int size = deque.size();
+            List<Integer> tmp = new ArrayList<>();
+            for (int i = 0; i < size; i++) {
+                Node node = deque.pollFirst();
+                tmp.add(node.val);
+                for (Node child : node.children) {
+                    deque.addLast(child);
+                }
             }
-            map.put(nums[i], i);
+            list.add(tmp);
         }
-        return new int[]{};
+        return list;
     }
+
+
+    class Node {
+        public int val;
+        public List<Node> children;
+
+        public Node() {
+        }
+
+        public Node(int _val) {
+            val = _val;
+        }
+
+        public Node(int _val, List<Node> _children) {
+            val = _val;
+            children = _children;
+        }
+    }
+
+    ;
 }
