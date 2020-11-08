@@ -3,76 +3,56 @@ import java.util.*;
 public class Solution {
     public static void main(String[] args) {
         Solution solution = new Solution();
-        TreeNode root = solution.deserialize("1,2,3,null,null,4,5");
-        String str = solution.serialize(root);
-        System.out.println(str);
     }
 
-    // Encodes a tree to a single string.
-    public String serialize(TreeNode root) {
-        if (root == null) return "";
-        Queue<TreeNode> queue = new LinkedList<>();
-        StringBuilder sb = new StringBuilder();
-        queue.offer(root);
-        while (!queue.isEmpty()) {
-            TreeNode node = queue.poll();
-            if (node == null) sb.append("null,");
-            else {
-                sb.append(node.val).append(",");
-                queue.offer(node.left);
-                queue.offer(node.right);
+    public List<List<String>> solveNQueens(int n) {
+        List<List<String>> res = new ArrayList<>();
+        if (n > 0) backtrack(new int[n][n], res, 0);
+        return res;
+    }
+
+    private void backtrack(int[][] board, List<List<String>> res, int row) {
+        //terminator
+        if (row == board.length) {
+            res.add(boardToList(board));
+            return;
+        }
+        //traverse each row
+        for (int i = 0; i < board.length; i++) {
+            if (valid(board, row, i)) {
+                board[row][i] = 1;
+                backtrack(board, res, row + 1);
+                board[row][i] = 0;
             }
         }
-        return sb.toString();
     }
 
-    // Decodes your encoded data to tree.
-    public TreeNode deserialize(String data) {
-        if (data.length() == 0) return null;
-        String[] list = data.split(",");
-        TreeNode root = new TreeNode(Integer.parseInt(list[0]));
-        Queue<TreeNode> queue = new LinkedList<>();
-        queue.offer(root);
-        int i = 1;
-        while (i < list.length) {
-            TreeNode node = queue.poll();
-            String leftVal = list[i];
-            String rightVal = list[i + 1];
-
-            if (!leftVal.equals("null")) {
-                TreeNode left = new TreeNode(Integer.parseInt(leftVal));
-                node.left = left;
-                queue.offer(left);
+    private List<String> boardToList(int[][] board) {
+        List<String> path = new ArrayList<>();
+        for (int i = 0; i < board.length; i++) {
+            StringBuilder sb = new StringBuilder();
+            for (int cell : board[i]) {
+                if (cell == 1) sb.append("Q");
+                else sb.append(".");
             }
-
-            if (!rightVal.equals("null")) {
-                TreeNode right = new TreeNode(Integer.parseInt(rightVal));
-                node.right = right;
-                queue.offer(right);
-            }
-            i += 2; // every time read 2 nodes - left,right
+            path.add(sb.toString());
         }
-        return root;
+        return path;
     }
 
-
-    static class TreeNode {
-        int val;
-        TreeNode left;
-        TreeNode right;
-
-        TreeNode() {
+    private boolean valid(int[][] board, int row, int col) {
+        //check perpendicular
+        for (int i = 0; i < row; i++) {
+            if (board[i][col] == 1) return false;
         }
-
-        TreeNode(int val) {
-            this.val = val;
+        //check upper right
+        for (int i = row, j = col; i >= 0 && j < board.length; i--, j++) {
+            if (board[i][j] == 1) return false;
         }
-
-        TreeNode(int val, TreeNode left, TreeNode right) {
-            this.val = val;
-            this.left = left;
-            this.right = right;
+        //check upper left
+        for (int i = row, j = col; i >= 0 && j >= 0; i--, j--) {
+            if (board[i][j] == 1) return false;
         }
+        return true;
     }
-
 }
