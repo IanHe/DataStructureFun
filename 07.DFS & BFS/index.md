@@ -5,7 +5,7 @@
 ![Image of dfs_code_no_recursion](imgs/dfs_code_no_recursion.jpg)
 ###DFS Traversal Order
 ![Image of dfs_traversal_orderg](imgs/dfs_traversal_order.jpg)
-###DFS e.g: step 5 reach node B -> because node S is visited, backtrack to node E -> backtrack to node G -> step 6, go to node F
+###DFS & Backtrack e.g: step 5 reach node B -> because node S is visited, backtrack to node E -> backtrack to node G -> step 6, go to node F
 ![Image of dfs_traversal_orderg](imgs/dfs_traversal_order_1.jpg)
 <br></br>
 ##BFS(Breadth First Search)
@@ -17,8 +17,8 @@
 ![Image of bfs_code](imgs/bfs_code.jpg)
 <br></br>
 ###Leetcode:
-####102
-####127
+####102. Binary Tree Level Order Traversal - medium - https://leetcode.com/problems/binary-tree-level-order-traversal/
+####127. Word Ladder - medium - https://leetcode.com/problems/word-ladder/
 ####126
 ####200
 ####433
