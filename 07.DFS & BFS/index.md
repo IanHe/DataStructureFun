@@ -18,9 +18,10 @@
 <br></br>
 ###Leetcode:
 ####102. Binary Tree Level Order Traversal - medium - https://leetcode.com/problems/binary-tree-level-order-traversal/
+####433. Minimum Genetic Mutation - medium - https://leetcode.com/problems/minimum-genetic-mutation/
+####22. Generate Parentheses - Medium -- https://leetcode.com/problems/generate-parentheses/
+####515. Find Largest Value in Each Tree Row - medium - https://leetcode.com/problems/find-largest-value-in-each-tree-row/
 ####127. Word Ladder - medium - https://leetcode.com/problems/word-ladder/
-####126
-####200
-####433
-####515
-####529
+####126. Word Ladder II - hard - https://leetcode.com/problems/word-ladder-ii/
+####200. Number of Islands - medium - https://leetcode.com/problems/number-of-islands/
+####529. Minesweeper - medium - https://leetcode.com/problems/minesweeper/
