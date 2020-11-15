@@ -1,29 +1,32 @@
 import org.testng.annotations.Test;
 
+import java.util.Arrays;
+
 import static org.testng.Assert.*;
 
 public class SolutionTest {
     @Test
     public void testSolution() {
         Solution solution = new Solution();
-        assertEquals(solution.findMin(new int[]{4, 5, 6, 7, 0, 1, 2}), 0);
-        assertEquals(solution.findMin(new int[]{3, 4, 5, 1, 2}), 1);
-        assertEquals(solution.findMin(new int[]{3}), 3);
+        assertEquals(solution.uniquePaths(3, 7), 28);
+        assertEquals(solution.uniquePaths(3, 2), 3);
+        assertEquals(solution.uniquePaths(7, 3), 28);
+        assertEquals(solution.uniquePaths(1, 1), 1);
     }
 }
 
 class Solution {
-    public int findMin(int[] nums) {
-        int left = 0, right = nums.length - 1, mid;
-        while (left < right) {
-            mid = (left + right) >> 1;
-            if (nums[mid] > nums[right]) {
-                left = mid + 1;
-            } else {
-                right = mid;
-            }
+    public int uniquePaths(int m, int n) {
+        return dfs(m - 1, n - 1, new int[m][n]);
+    }
+
+    private int dfs(int m, int n, int[][] memo) {
+        if (m < 0 || n < 0) return 0;
+        if (m == 0 || n == 0) return 1;
+        if (memo[m][n] == 0) {
+            memo[m][n] = dfs(m - 1, n, memo) + dfs(m, n - 1, memo);
         }
-        return nums[left];
+        return memo[m][n];
     }
 }
 

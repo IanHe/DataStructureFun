@@ -9,7 +9,7 @@
 ![Image of dynamic_programming_key](imgs/dynamic_programming_key.jpg)
 ###How to resolve - DP
 ```
-First: find the repeatability(divice)
+First: find the repeatability(divide)
 Second: define state array - one dimension or two dimensions
 Third: write down: DP Equation
 ```
