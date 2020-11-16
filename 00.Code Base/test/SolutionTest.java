@@ -8,25 +8,29 @@ public class SolutionTest {
     @Test
     public void testSolution() {
         Solution solution = new Solution();
-        assertEquals(solution.uniquePaths(3, 7), 28);
-        assertEquals(solution.uniquePaths(3, 2), 3);
-        assertEquals(solution.uniquePaths(7, 3), 28);
-        assertEquals(solution.uniquePaths(1, 1), 1);
+        assertEquals(solution.coinChange(new int[]{1, 2, 5}, 11), 3);
+
     }
 }
 
 class Solution {
-    public int uniquePaths(int m, int n) {
-        return dfs(m - 1, n - 1, new int[m][n]);
-    }
-
-    private int dfs(int m, int n, int[][] memo) {
-        if (m < 0 || n < 0) return 0;
-        if (m == 0 || n == 0) return 1;
-        if (memo[m][n] == 0) {
-            memo[m][n] = dfs(m - 1, n, memo) + dfs(m, n - 1, memo);
+    /*
+        dp[i] = min(dp[i-coin_1], dp[i-coin_2], ...dp[i-coin_n]) + 1
+     */
+    public int coinChange(int[] coins, int amount) {
+        if (amount == 0) return -1;
+        int[] dp = new int[amount + 1];
+        for (int i = 1; i <= amount; i++) {
+            dp[i] = amount + 1;
+            for (int coin : coins) {
+                if (coin == i) {
+                    dp[i] = 1;
+                    break;
+                }
+                if (coin < i) dp[i] = Math.min(dp[i - coin] + 1, dp[i]);
+            }
         }
-        return memo[m][n];
+        return dp[amount] > amount ? -1 : dp[amount];
     }
 }
 
