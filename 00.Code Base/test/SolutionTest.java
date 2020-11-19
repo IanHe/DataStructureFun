@@ -1,36 +1,36 @@
 import org.testng.annotations.Test;
 
-import java.util.Arrays;
-
-import static org.testng.Assert.*;
+import static org.testng.Assert.assertEquals;
 
 public class SolutionTest {
     @Test
     public void testSolution() {
         Solution solution = new Solution();
-        assertEquals(solution.coinChange(new int[]{1, 2, 5}, 11), 3);
-
+        assertEquals(solution.maxProfit(new int[]{3, 3, 5, 0, 0, 3, 1, 4}), 6);
+        assertEquals(solution.maxProfit(new int[]{1, 2, 3, 4, 5}), 4);
+        assertEquals(solution.maxProfit(new int[]{7, 6, 4, 3, 1}), 0);
     }
 }
 
 class Solution {
     /*
-        dp[i] = min(dp[i-coin_1], dp[i-coin_2], ...dp[i-coin_n]) + 1
+        i: 0 -> len-1
+        dp0 = max(dp0, -prices[i])  // the first time buy stock
+        dp1 = max(dp1, dp0 + prices[i]) // the first time sell stock
+        dp2 = max(dp2, dp1 - prices[i])// the second time buy stock
+        dp3 = max(dp3, dp2 + prices[i])// the second time sell stock
      */
-    public int coinChange(int[] coins, int amount) {
-        if (amount == 0) return -1;
-        int[] dp = new int[amount + 1];
-        for (int i = 1; i <= amount; i++) {
-            dp[i] = amount + 1;
-            for (int coin : coins) {
-                if (coin == i) {
-                    dp[i] = 1;
-                    break;
-                }
-                if (coin < i) dp[i] = Math.min(dp[i - coin] + 1, dp[i]);
-            }
+
+    public int maxProfit(int[] prices) {
+        if (prices == null || prices.length <= 1) return 0;
+        int dp0 = -prices[0], dp1 = Integer.MIN_VALUE, dp2 = Integer.MIN_VALUE, dp3 = Integer.MIN_VALUE;
+        for (int i = 1; i < prices.length; i++) {
+            dp0 = Math.max(dp0, -prices[i]);
+            dp1 = Math.max(dp1, dp0 + prices[i]);
+            if (dp1 > Integer.MIN_VALUE) dp2 = Math.max(dp2, dp1 - prices[i]);
+            if (dp2 > Integer.MIN_VALUE) dp3 = Math.max(dp3, dp2 + prices[i]);
         }
-        return dp[amount] > amount ? -1 : dp[amount];
+        return Math.max(0, Math.max(dp1, dp3));
     }
 }
 
