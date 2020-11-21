@@ -20,7 +20,7 @@
 
 <br></br>
 <br></br>
-##Disjoint Sets(并查集) - Group or not?(组团，配对的问题)
+##Disjoint Sets(Union-Find 并查集) - Group or not?(组团，配对的问题)
 ![Image of disjoint_sets](imgs/disjoint_sets.jpg)
 ##Example - 547. Friend Circles, 200. Number of Islands
 ####0, 1, 2 represent 3 persons, f(0, 1) = 1 => 0 and 1 is in the same set

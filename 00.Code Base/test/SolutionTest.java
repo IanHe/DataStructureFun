@@ -1,8 +1,5 @@
 import org.testng.annotations.Test;
 
-import java.util.ArrayList;
-import java.util.List;
-
 public class SolutionTest {
     @Test
     public void testSolution() {
@@ -12,75 +9,72 @@ public class SolutionTest {
 }
 
 class Solution {
-    public List<String> findWords(char[][] board, String[] words) {
-        Trie trie = new Trie();
-        List<String> result = new ArrayList<>();
-        for (String word : words) {
-            trie.insert(word);
-        }
-
-        for (int i = 0; i < board.length; i++) {
-            for (int j = 0; j < board[0].length; j++) {
-                dfs(board, i, j, trie.root, result);
+    public void solve(char[][] board) {
+        if (board == null || board.length == 0 || board[0].length == 0) return;
+        int m = board.length, n = board[0].length;
+        UnionFind uf = new UnionFind(m * n + 1);
+        int edgeIndex = m * n;
+        int[][] dirs = {{0, 1}, {0, -1}, {1, 0}, {-1, 0}};
+        for (int i = 0; i < m; i++) {
+            for (int j = 0; j < n; j++) {
+                if (board[i][j] == 'O') {
+                    if (i == 0 || i == m - 1 || j == 0 || j == n - 1)
+                        uf.union(edgeIndex, index(i, j, n));
+                    else {
+                        for (int[] dir : dirs) {
+                            int x = i + dir[0], y = j + dir[1];
+                            if (x >= 0 && x < m && y >= 0 && y < n && board[x][y] == 'O')
+                                uf.union(index(i, j, n), index(x, y, n));
+                        }
+                    }
+                }
             }
         }
-        return result;
-    }
 
-    private void dfs(char[][] board, int i, int j, TrieNode node, List<String> result) {
-        if (i < 0 || j < 0 || i >= board.length || j >= board[0].length) return;
-        char c = board[i][j];
-        if (c == '$' || node.links[c - 'a'] == null) return;
-        TrieNode nextNode = node.links[c - 'a'];
-        if (nextNode.word != null) {
-            result.add(nextNode.word);
-            return;
-        }
-        board[i][j] = '$';
-        dfs(board, i - 1, j, nextNode, result);
-        dfs(board, i + 1, j, nextNode, result);
-        dfs(board, i, j - 1, nextNode, result);
-        dfs(board, i, j + 1, nextNode, result);
-        //set state back
-        board[i][j] = c;
-    }
-}
-
-class TreeNode {
-    int val;
-    TreeNode left;
-    TreeNode right;
-
-    TreeNode() {
-    }
-
-    TreeNode(int val) {
-        this.val = val;
-    }
-
-    TreeNode(int val, TreeNode left, TreeNode right) {
-        this.val = val;
-        this.left = left;
-        this.right = right;
-    }
-}
-
-class Trie {
-    TrieNode root = new TrieNode();
-
-    public void insert(String word) {
-        TrieNode node = root;
-        for (char c : word.toCharArray()) {
-            if (node.links[c - 'a'] == null) {
-                node.links[c - 'a'] = new TrieNode();
+        for (int i = 0; i < m; i++) {
+            for (int j = 0; j < n; j++) {
+                if (board[i][j] == 'O' && !uf.isConnected(index(i, j, n), edgeIndex))
+                    board[i][j] = 'X';
             }
-            node = node.links[c - 'a'];
         }
-        node.word = word;
+    }
+
+    private int index(int x, int y, int cols) {
+        return x * cols + y;
+    }
+
+    static class UnionFind {
+        private int[] parents;
+
+        //init
+        public UnionFind(int n) {
+            this.parents = new int[n];
+            for (int i = 0; i < n; i++) {
+                // parent node are leading node => parent(a) = a
+                parents[i] = i;
+            }
+        }
+
+        public boolean isConnected(int x, int y) {
+            return find(x) == find(y);
+        }
+
+        public int find(int x) {
+            while (parents[x] != x) {
+                // route compression
+                parents[x] = parents[parents[x]];
+                x = parents[x];
+            }
+            return x;
+        }
+
+        public void union(int x, int y) {
+            int rootX = find(x);
+            int rootY = find(y);
+            if (rootX == rootY) return;
+            parents[rootX] = rootY;
+        }
     }
 }
 
-class TrieNode {
-    TrieNode[] links = new TrieNode[26];
-    String word;
-}
+
