@@ -1,78 +1,89 @@
 import org.testng.annotations.Test;
 
+import java.util.*;
+
 public class SolutionTest {
     @Test
     public void testSolution() {
         Solution solution = new Solution();
-
     }
 }
 
 class Solution {
-    public void solve(char[][] board) {
-        if (board == null || board.length == 0 || board[0].length == 0) return;
-        int m = board.length, n = board[0].length;
-        UnionFind uf = new UnionFind(m * n + 1);
-        int edgeIndex = m * n;
-        int[][] dirs = {{0, 1}, {0, -1}, {1, 0}, {-1, 0}};
-        for (int i = 0; i < m; i++) {
-            for (int j = 0; j < n; j++) {
-                if (board[i][j] == 'O') {
-                    if (i == 0 || i == m - 1 || j == 0 || j == n - 1)
-                        uf.union(edgeIndex, index(i, j, n));
-                    else {
-                        for (int[] dir : dirs) {
-                            int x = i + dir[0], y = j + dir[1];
-                            if (x >= 0 && x < m && y >= 0 && y < n && board[x][y] == 'O')
-                                uf.union(index(i, j, n), index(x, y, n));
-                        }
-                    }
-                }
-            }
-        }
+    public int slidingPuzzle(int[][] board) {
+        int[][] dir = {{1, 3}, {0, 2, 4}, {1, 5}, {0, 4}, {1, 3, 5}, {2, 4}};
+        String target = "123450";
+        Node cur = new Node(board);
+        if (cur.boardStr.equals(target)) return 0;
 
-        for (int i = 0; i < m; i++) {
-            for (int j = 0; j < n; j++) {
-                if (board[i][j] == 'O' && !uf.isConnected(index(i, j, n), edgeIndex))
-                    board[i][j] = 'X';
+        PriorityQueue<Node> queue = new PriorityQueue<>( (a, b) -> a.power - b.power);
+        queue.offer(cur);
+        HashSet<Node> visited = new HashSet<>();
+        visited.add(cur);
+
+        while (!queue.isEmpty()) {
+            cur = queue.poll();
+            for (int nextZeroPos : dir[cur.zeroPos]) {
+                String nextStr = swap(cur.boardStr, cur.zeroPos, nextZeroPos);
+                if (nextStr.equals(target)) return cur.count + 1;
+                Node next = new Node(nextStr, nextZeroPos, cur.count + 1);
+                if (visited.contains(next)) continue;
+                queue.offer(next);
+                visited.add(next);
             }
         }
+        return -1;
     }
 
-    private int index(int x, int y, int cols) {
-        return x * cols + y;
+    private String swap(String str, int posA, int posB) {
+        char[] arr = str.toCharArray();
+        char tmp = arr[posA];
+        arr[posA] = arr[posB];
+        arr[posB] = tmp;
+        return String.valueOf(arr);
     }
 
-    static class UnionFind {
-        private int[] parents;
+    private String boardString(int[][] board) {
+        StringBuilder sb = new StringBuilder();
+        for (int i = 0; i < 6; i++) {
+            sb.append(board[i / 3][i % 3]);
+        }
+        return sb.toString();
+    }
 
-        //init
-        public UnionFind(int n) {
-            this.parents = new int[n];
-            for (int i = 0; i < n; i++) {
-                // parent node are leading node => parent(a) = a
-                parents[i] = i;
+    class Node {
+        String boardStr;
+        int zeroPos;
+        int count; // g(n)
+        int distance; // h(n)
+        int power; // f(n) = g(n) + h(n) - priority power
+
+        public Node(int[][] board) {
+            //change board to one-dimensional array
+            this.boardStr = boardString(board);
+            this.count = 0;
+            this.distance = calcDistance();
+            this.power = this.count + this.distance;
+            this.zeroPos = this.boardStr.indexOf('0');
+        }
+
+        public Node(String boardStr, int zeroPos, int count) {
+            this.boardStr = boardStr;
+            this.zeroPos = zeroPos;
+            this.count = count;
+            this.distance = calcDistance();
+            this.power = this.count + this.distance;
+        }
+
+        private int calcDistance() {
+            int distance = 0;
+            char[] chars = boardStr.toCharArray();
+            for (int i = 0; i < 6; i++) {
+                int v = chars[i] - 1;
+                // 曼哈顿距离，计算每个坐标的当前位置与最终位置的距离
+                distance += Math.abs(v / 3 - i / 3) + Math.abs(v % 3 - i % 3);
             }
-        }
-
-        public boolean isConnected(int x, int y) {
-            return find(x) == find(y);
-        }
-
-        public int find(int x) {
-            while (parents[x] != x) {
-                // route compression
-                parents[x] = parents[parents[x]];
-                x = parents[x];
-            }
-            return x;
-        }
-
-        public void union(int x, int y) {
-            int rootX = find(x);
-            int rootY = find(y);
-            if (rootX == rootY) return;
-            parents[rootX] = rootY;
+            return distance;
         }
     }
 }
