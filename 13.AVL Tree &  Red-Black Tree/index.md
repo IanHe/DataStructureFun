@@ -55,7 +55,7 @@ def postorder(self, root):
 ![Image of avl_summary](imgs/avl_summary.jpg)
 <br></br>
 <br></br>
-###Black-Red Tree(Approximately-balanced binary search tree)
+###Red-Black Tree(Approximately-balanced binary search tree)
 ![Image of black-red_tree](imgs/black-red_tree.jpg)
 ![Image of black-red_tree_1](imgs/black-red_tree_1.jpg)
 ###AVL vs Black-End Tree
