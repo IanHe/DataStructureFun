@@ -1,6 +1,6 @@
 ##Sorting Algorithm - Reading
 ####https://www.cnblogs.com/onepixel/p/7674659.html - 十大经典排序算法（动图演示）
-####https://www.bilibili.com/video/av25136272       - 简单明了】9种经典排序算法可视化动画
+####https://www.bilibili.com/video/av25136272       - 简单明了, 9种经典排序算法可视化动画
 ####https://www.bilibili.com/video/av63851336       - 6分钟看完15种排序算法动画展示
 <br></br>
 ###Sorting Algorithm - Classfication

@@ -1,51 +1,87 @@
 import org.testng.annotations.Test;
 
-import java.util.*;
+import java.util.HashMap;
+import java.util.Map;
 
 public class SolutionTest {
     @Test
     public void testSolution() {
-        Solution solution = new Solution();
+//        Solution solution = new Solution();
     }
 }
 
-class Solution {
+class LRUCache {
+    int size, capacity;
+    Map<Integer, Node> cache;
+    Node leftBound, rightBound;
 
-    private int count;
-    public int totalNQueens(int n) {
-        char[][] board = new char[n][n];
-        for (int i = 0; i < board.length; i++)
-            Arrays.fill(board[i], '.');
-        dfs(board, 0);
-        return count;
+    public LRUCache(int capacity) {
+        this.size = 0;
+        this.capacity = capacity;
+        this.cache = new HashMap<>();
+        this.leftBound = new Node();
+        this.rightBound = new Node();
+        leftBound.next = rightBound;
+        rightBound.prev = leftBound;
     }
 
-    private void dfs(char[][] board, int row) {
-        // terminator
-        if (row == board.length) {
-            count++;
-            return;
-        }
+    public int get(int key) {
+        Node node = this.cache.get(key);
+        if (node == null) return -1;
+        return node.value;
+    }
 
-        for (int i = 0; i < board.length; i++) {
-            if (isValid(board, row, i)) {
-                board[row][i] = 'Q';
-                dfs(board, row + 1);
-                board[row][i] = '.';
-            }
+    public void put(int key, int value) {
+        Node node = cache.get(key);
+        if (node != null) {
+            node.value = value;
+            moveToHead(node);
+        } else {
+            node = new Node(key, value);
+            cache.put(key, node);
+            addToHead(node);
+            size++;
+            if (size > capacity) removeTail();
         }
     }
 
-    private boolean isValid(char[][] board, int row, int col) {
-        // validate top
-        for (int i = 0; i < row; i++) if (board[i][col] == 'Q') return false;
-        // validate top-left
-        for (int i = row - 1, j = col - 1; i >= 0 && j >= 0; i--, j--)
-            if (board[i][j] == 'Q') return false;
-        // validate top-right
-        for (int i = row - 1, j = col + 1; i >= 0 && j < board.length; i--, j++)
-            if (board[i][j] == 'Q') return false;
-        return true;
+    private void moveToHead(Node node) {
+        remove(node);
+        addToHead(node);
+    }
+
+    private void addToHead(Node node) {
+        node.prev = leftBound;
+        node.next = leftBound.next;
+        leftBound.next.prev = node;
+        leftBound.next = node;
+    }
+
+    private void remove(Node node) {
+        if (node.prev != null) node.prev.next = node.next;
+        if (node.next != null) node.next.prev = node.prev;
+    }
+
+    private void removeTail() {
+        Node tail = rightBound.prev;
+        if (tail != null) {
+            remove(tail);
+            cache.remove(tail.key);
+            size--;
+        }
+    }
+
+    class Node {
+        int key, value;
+        Node prev, next;
+
+        public Node() {
+        }
+
+        public Node(int key, int value) {
+            this.key = key;
+            this.value = value;
+        }
     }
 }
 
