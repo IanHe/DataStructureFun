@@ -27,8 +27,51 @@
 ![Image of /quick_vs_merge_sort](imgs//quick_vs_merge_sort.jpg)
 <br></br>
 ##Heap Sort - We can use priority queue instead of self-defined heap
-![Image of /heap_sort](imgs//heap_sort.jpg)
-![Image of /heap_sort_1](imgs//heap_sort_1.jpg)
+```
+    public void sort(int arr[]) {
+        int n = arr.length;
+
+        // Build heap (rearrange array)
+        for (int i = n / 2 - 1; i >= 0; i--)
+            heapify(arr, n, i);
+
+        // One by one extract an element from heap
+        for (int i = n - 1; i >= 0; i--) {
+            // Move current root to end
+            int temp = arr[0];
+            arr[0] = arr[i];
+            arr[i] = temp;
+
+            // call max heapify on the reduced heap
+            heapify(arr, i, 0);
+        }
+    }
+
+    // To heapify a subtree rooted with node i which is
+    // an index in arr[]. n is size of heap
+    void heapify(int arr[], int length, int i) {
+        int largest = i;  // Initialize largest as root
+        int left = 2 * i + 1, right = 2 * i + 2;  
+
+        // If left child is larger than root
+        if (left < length && arr[left] > arr[largest])
+            largest = left;
+
+        // If right child is larger than largest so far
+        if (right < length && arr[right] > arr[largest])
+            largest = right;
+
+        // If largest is not root
+        if (largest != i) {
+            int swap = arr[i];
+            arr[i] = arr[largest];
+            arr[largest] = swap;
+
+            // Recursively heapify the affected sub-tree
+            heapify(arr, length, largest);
+        }
+    }
+```
 <br></br>
 ##Special Sorting
 ![Image of /special_sorting](imgs//special_sorting.jpg)

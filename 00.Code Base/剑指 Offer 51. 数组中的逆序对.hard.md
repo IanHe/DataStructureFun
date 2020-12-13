@@ -15,8 +15,9 @@
 
 0 <= 数组长度 <= 50000
 ```
-##Solution - Merge Sort - TC: O(N logN)
-##Refer: https://blog.csdn.net/afei__/article/details/82951905 and https://www.nowcoder.com/questionTerminal/96bd6684e04a44eb80e6a68efc0ec6c5
+###Solution - Merge Sort - TC: O(N logN)
+####https://blog.csdn.net/afei__/article/details/82951905
+####https://www.nowcoder.com/questionTerminal/96bd6684e04a44eb80e6a68efc0ec6c5
 ```
     public int reversePairs(int[] nums) {
         return mergeSort(nums, 0, nums.length);
@@ -27,14 +28,14 @@
         int len = end - start;
         if (len > 1) {
             int mid = (start + end) >> 1;
-            inversionCount += mergeSort(arr, start, mid); // sort left
-            inversionCount += mergeSort(arr, mid, end); // sort right
+            inversionCount += mergeSort(arr, start, mid); // sort left, mid index is not included
+            inversionCount += mergeSort(arr, mid, end); // sort right, end index is not included
             inversionCount += merge(arr, start, mid, end);
         }
         return inversionCount;
     }
 
-    private int merge(int[] arr, int start, int mid, int end) {
+    private int merge(int[] arr, int start, int mid, int end) { // end index is not included
         int[] tmp = new int[end - start];
         int inversionCount = 0;
         int i = start; // 左半部分索引
@@ -46,7 +47,7 @@
             } else {
                 // find inversion
                 tmp[k++] = arr[j++];
-                // once a[i] > arr[j], then a[i+1], a[i+2],...a[mid] > a[j], so inversionCount += (mid-i)
+                // once arr[i] > arr[j], then a[i+1], a[i+2],...a[mid] > a[j], so inversionCount += (mid-i)
                 inversionCount += mid - i;
             }
         }
