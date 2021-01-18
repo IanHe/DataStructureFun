@@ -1,5 +1,9 @@
 import org.testng.annotations.Test;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+
 import static org.testng.Assert.assertEquals;
 
 public class SolutionTest {
@@ -8,30 +12,36 @@ public class SolutionTest {
         Solution sol = new Solution();
         System.out.println(1 << 1);
 //        assertEquals(sol.myAtoi(" 123"), 123);
-
+        assertEquals(sol.climbStairs(4), 5);
     }
 }
 
 class Solution {
-    public boolean isMatch(String s, String p) {
-        int[][] mem = new int[s.length() + 1][p.length() + 1];
-        return dfs(s.toCharArray(), 0, p.toCharArray(), 0, mem);
-    }
-
-    private boolean dfs(char[] s, int i, char[] p, int j, int[][] mem) {
-        if (j >= p.length) return i >= s.length;
-        if (mem[i][j] != 0) return mem[i][j] > 0;
-        boolean match = i < s.length && ((s[i] == p[j]) || p[j] == '.');
-        if (j < p.length - 1 && p[j + 1] == '*') {
-            boolean t = dfs(s, i, p, j + 2, mem) || (match && dfs(s, i + 1, p, j, mem));
-            if (t) mem[i][j] = 1;
-            else mem[i][j] = -1;
-            return t;
+    public List<List<Integer>> threeSum(int[] nums) {
+        List<List<Integer>> list = new ArrayList<>();
+        int len = nums.length;
+        if (len < 3) return list;
+        Arrays.sort(nums);
+        for (int i = 0; i < len; i++) {
+            if (nums[i] > 0) break;
+            if (i > 0 && nums[i] == nums[i - 1]) continue; // skip duplicate
+            int left = i + 1, right = len - 1;
+            while (left < right) {
+                int sum = nums[i] + nums[left] + nums[right];
+                if (sum == 0) {
+                    list.add(List.of(nums[i], nums[left], nums[right]));
+                    while (left < right && nums[left] == nums[left + 1]) left++; // skip left pointer duplicate
+                    while (left < right && nums[right] == nums[right - 1]) right--; // slip right pointer duplicate
+                    left++;
+                    right--;
+                } else if (sum < 0) {
+                    left++;
+                } else {
+                    right--;
+                }
+            }
         }
-        boolean t = match && dfs(s, i + 1, p, j + 1, mem);
-        if (t) mem[i][j] = 1;
-        else mem[i][j] = -1;
-        return t;
+        return list;
     }
 }
 
