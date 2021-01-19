@@ -12,7 +12,6 @@ public class SolutionTest {
         Solution sol = new Solution();
         System.out.println(1 << 1);
 //        assertEquals(sol.myAtoi(" 123"), 123);
-        assertEquals(sol.climbStairs(4), 5);
     }
 }
 
