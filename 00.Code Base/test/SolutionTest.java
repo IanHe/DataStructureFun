@@ -1,9 +1,5 @@
 import org.testng.annotations.Test;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-
 import static org.testng.Assert.assertEquals;
 
 public class SolutionTest {
@@ -11,36 +7,30 @@ public class SolutionTest {
     public void testSolution() {
         Solution sol = new Solution();
         System.out.println(1 << 1);
-//        assertEquals(sol.myAtoi(" 123"), 123);
+        assertEquals(sol.trap(new int[]{0, 1, 0, 2, 1, 0, 1, 3, 2, 1, 2, 1}), 6);
     }
 }
 
 class Solution {
-    public List<List<Integer>> threeSum(int[] nums) {
-        List<List<Integer>> list = new ArrayList<>();
-        int len = nums.length;
-        if (len < 3) return list;
-        Arrays.sort(nums);
-        for (int i = 0; i < len; i++) {
-            if (nums[i] > 0) break;
-            if (i > 0 && nums[i] == nums[i - 1]) continue; // skip duplicate
-            int left = i + 1, right = len - 1;
-            while (left < right) {
-                int sum = nums[i] + nums[left] + nums[right];
-                if (sum == 0) {
-                    list.add(List.of(nums[i], nums[left], nums[right]));
-                    while (left < right && nums[left] == nums[left + 1]) left++; // skip left pointer duplicate
-                    while (left < right && nums[right] == nums[right - 1]) right--; // slip right pointer duplicate
-                    left++;
-                    right--;
-                } else if (sum < 0) {
-                    left++;
-                } else {
-                    right--;
-                }
+    public int trap(int[] height) {
+        if (height == null || height.length <= 1) return 0;
+        int n = height.length;
+        int left = 0, right = n - 1; // two pointers
+        int leftMax = 0, rightMax = 0, result = 0;
+        while (left < right) {
+            leftMax = Math.max(leftMax, height[left]);
+            rightMax = Math.max(rightMax, height[right]);
+            // min(i_leftMax, i_rightMax) is the matter
+            // if leftMax < rightMax which means leftMax is the min(i_leftMax, i_rightMax) on the left pointer
+            if (leftMax < rightMax) {
+                result += leftMax - height[left]; // leftMax always >= left
+                left++;
+            } else {
+                result += rightMax - height[right];
+                right--;
             }
         }
-        return list;
+        return result;
     }
 }
 
