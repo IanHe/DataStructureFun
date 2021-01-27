@@ -2,61 +2,38 @@ import org.testng.annotations.Test;
 
 import java.util.*;
 
-import static org.testng.Assert.assertEquals;
+import org.testng.Assert;
 
 public class SolutionTest {
     @Test
     public void testSolution() {
         Solution sol = new Solution();
         System.out.println(1 << 1);
-        Solution.TreeNode node = sol.deserialize("1,2,3,null,null,4,null,null,5");
-        assertEquals(node, null);
+        List<List<Integer>> res = sol.subsets(new int[]{1, 2, 3});
+        Assert.assertNotEquals(res, null);
     }
 }
 
 class Solution {
-    public String serialize(TreeNode root) {
-        StringBuilder sb = new StringBuilder();
-        buildString(root, sb);
-        return sb.toString();
+    public List<List<Integer>> subsets(int[] nums) {
+        List<List<Integer>> res = new ArrayList<>();
+        List<Integer> path = new ArrayList<>();
+        res.add(new ArrayList<>()); // add empty set
+        dfs_backtrack(nums, res, path, 0);
+        return res;
     }
 
-    private void buildString(TreeNode node, StringBuilder sb) {
-        if (node == null) {
-            sb.append("null").append(",");
-        } else {
-            sb.append(node.val).append(",");
-            buildString(node.left, sb);
-            buildString(node.right, sb);
-        }
-    }
-
-    // Decodes your encoded data to tree.
-    public TreeNode deserialize(String data) {
-        Deque<String> nodes = new LinkedList<>();
-        nodes.addAll(Arrays.asList(data.split(",")));
-        return buildTree(nodes);
-    }
-
-    private TreeNode buildTree(Deque<String> nodes) {
-        if(nodes.isEmpty()) return null;
-        String val = nodes.remove();
-        if (val.equals("null")) return null;
-        else {
-            TreeNode node = new TreeNode(Integer.parseInt(val));
-            node.left = buildTree(nodes);
-            node.right = buildTree(nodes);
-            return node;
-        }
-    }
-
-    public class TreeNode {
-        int val;
-        TreeNode left;
-        TreeNode right;
-
-        TreeNode(int x) {
-            val = x;
+    /*
+        [] -> [][1] -> [][1] -> [][1][1, 2] -> [][1][1, 2][1, 2, 3] -> [][1][1, 2][1, 2, 3][1, 3]
+        [][1][1, 2][1, 2, 3][1, 3] -> [][1][1, 2][1, 2, 3][1, 3][2] -> [][1][1, 2][1, 2, 3][1, 3][2][2, 3]
+        [][1][1, 2][1, 2, 3][1, 3][2][2, 3] -> [][1][1, 2][1, 2, 3][1, 3][2][2, 3][3]
+     */
+    private void dfs_backtrack(int[] nums, List<List<Integer>> res, List<Integer> path, int startPos) {
+        for (int i = startPos; i < nums.length; i++) {
+            path.add(nums[i]);
+            res.add(new ArrayList<>(path)); // add to result set
+            dfs_backtrack(nums, res, path, i + 1);
+            path.remove(path.size() - 1);
         }
     }
 }
