@@ -35,36 +35,37 @@
 ![Image of disjoint_sets_path_compression](imgs/disjoint_sets_path_compression.jpg)
 ```
 Code Sample:
-    class UnionFind{
-        private int count = 0;
-        private int[] parent;
-        public UnionFind(int n){
-            count = n;
-            parent = new int[n];
-            for(int i = 0; i < n; i++){
-                parent[i] = i; //init all node's parent to itself
-            }
-        }
+    class UnionFind {
+    private int count = 0; // number of union set
+    private int[] parent;
 
-        // find the leading element in the set
-        public int find(int p){
-            while(p!=parent[p]){ // leading element => p == parent[p]
-                // path compression
-                parent[p] = parent[parent[p]];
-                p = parent[p];
-            }
-            return p;
-        }
-
-        public void union(int p , int q){
-            int rootP = find(p);
-            int rootQ = find(q);
-            if(rootP == rootQ) return;
-            parent[rootP] = rootQ;
-            //the number independent sets will minus -1
-            count--;
+    public UnionFind(int n) {
+        count = n;
+        parent = new int[n];
+        for (int i = 0; i < n; i++) {
+            parent[i] = i; //init all node's parent to itself
         }
     }
+
+    // find the leading element in the set
+    public int find(int p) {
+        while (p != parent[p]) { // leading element => p == parent[p]
+            // path compression
+            parent[p] = parent[parent[p]];
+            p = parent[p];
+        }
+        return p;
+    }
+
+    public void union(int p, int q) {
+        int rootP = find(p);
+        int rootQ = find(q);
+        if (rootP == rootQ) return;
+        parent[rootP] = rootQ;
+        //the number independent sets will minus -1
+        count--;
+    }
+}
 ```
 <br></br>
 ###Leetcode

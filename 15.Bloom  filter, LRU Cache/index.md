@@ -13,6 +13,8 @@
 ![Image of /bloom_filter_2](imgs//bloom_filter_2.jpg)
 ###Bloom filter usage
 ![Image of /bloom_filter_usage](imgs//bloom_filter_usage.jpg)
+###https://www.cnblogs.com/cpselvis/p/6265825.html
+###https://blog.csdn.net/tianyaleixiaowu/article/details/74721877
 ###Simple Bloom Filter Implementation: 
 ###https://github.com/lovasoa/bloomfilter/blob/master/src/main/java/BloomFilter.java
 ###https://github.com/Baqend/Orestes-Bloomfilter
@@ -24,7 +26,7 @@
 ![Image of /lru_cache](imgs//lru_cache.jpg)
 ###LRU Cache Insert - How does it work - insert A -> B -> C -> D -> E -> F -> C -> G
 ![Image of /lru_cache_insert](imgs//lru_cache_insert.jpg)
-###Cache Replacement Policies: FIFO, LIFO, LRU ...; refer: https://en.wikipedia.org/wiki/Cache_replacement_policies
+###Cache Replacement Policies: FIFO, LIFO, LRU ...: https://en.wikipedia.org/wiki/Cache_replacement_policies
 ![Image of /lru_strategy](imgs//lru_strategy.jpg)
 ###Simple LRU implementation:
 ```
