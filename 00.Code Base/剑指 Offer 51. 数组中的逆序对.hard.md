@@ -20,7 +20,7 @@
 ####https://www.nowcoder.com/questionTerminal/96bd6684e04a44eb80e6a68efc0ec6c5
 ```
     public int reversePairs(int[] nums) {
-        return mergeSort(nums, 0, nums.length);
+        return mergeSort(nums, 0, nums.length); // end index will be excluded
     }
 
     private int mergeSort(int[] arr, int start, int end) {
