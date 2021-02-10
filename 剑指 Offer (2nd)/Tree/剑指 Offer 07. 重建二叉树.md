@@ -18,9 +18,21 @@
         TreeNode node = new TreeNode(preorder[root]); // 建立根节点
         int i = dic.get(preorder[root]); // 找到根结点在中序遍历中的位置，划分根节点、左子树、右子树
         node.left = recur(root + 1, inOrderLeft, i - 1); // 开启左子树递归
-        int rightRoot = root + i - inOrderLeft + 1; // preorder中右子树的index
+        // preorder中右子树的index, i - inOrderLeft 为左子树的长度, root + 左子树的长度 + 1 为preOrder中右子树的根结点坐标
+        int rightRoot = root + i - inOrderLeft + 1; 
         node.right = recur(rightRoot, i + 1, inOrderRight); // 开启右子树递归
-        return node;  
+        return node;
+    }
+
+
+    public class TreeNode {
+        int val;
+        TreeNode left;
+        TreeNode right;
+
+        TreeNode(int x) {
+            val = x;
+        }
     }
 ```
 ![Image of /offer 07_1](imgs//offer 07_1.png)

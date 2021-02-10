@@ -1,21 +1,7 @@
-import org.testng.Assert;
-import org.testng.annotations.Test;
-
-
-public class SolutionSpec {
-
-    @Test
-    public void testSolution() {
-        Sol sol = new Sol();
-        int[] arr = new int[]{1, 3, 3};
-
-//        Assert.assertEquals(sol.minArray(arr), 1);
-    }
-}
-
-
-class Sol {
-
+##剑指 Offer 12. 矩阵中的路径 - Medium - https://leetcode-cn.com/problems/ju-zhen-zhong-de-lu-jing-lcof/
+![offer_12](imgs/offer%2012.png)
+###Solution - DFS & Pruning - TC: O(3^K MN), SC: O(K)
+```
     public boolean exist(char[][] board, String word) {
         char[] words = word.toCharArray();
         for (int i = 0; i < board.length; i++) {
@@ -27,8 +13,7 @@ class Sol {
     }
 
     private boolean dfs(char[][] board, int i, int j, char[] word, int k) {
-        if (i < 0 || j < 0 || i >= board.length || j >= board[0].length || board[i][j] != word[k])
-            return false;
+        if (i < 0 || j < 0 || i >= board.length || j >= board[0].length || board[i][j] != word[k]) return false
         if (k == word.length - 1) return true;
         board[i][j] = ' ';
         boolean res = dfs(board, i + 1, j, word, k + 1) || dfs(board, i, j + 1, word, k + 1)
@@ -36,10 +21,5 @@ class Sol {
         board[i][j] = word[k];
         return res;
     }
-
-}
-
-// Java program for implementation of QuickSort
-class QuickSort {
-
-}
+```
+![offer_12_1](imgs/offer%2012_1.png)
