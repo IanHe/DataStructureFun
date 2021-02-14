@@ -1,16 +1,6 @@
-##206. Reverse Linked List - easy - https://leetcode.com/problems/reverse-linked-list/
-```
-Reverse a singly linked list.
-
-Example:
-
-Input: 1->2->3->4->5->NULL
-Output: 5->4->3->2->1->NULL
-
-Follow up:
-
-A linked list can be reversed either iteratively or recursively. Could you implement both?
-```
+##剑指 Offer 24. 反转链表 - Easy - https://leetcode-cn.com/problems/fan-zhuan-lian-biao-lcof/
+###same as: https://leetcode-cn.com/problems/reverse-linked-list/
+![offer 24](imgs/offer 24.png)
 ###Solution 1 - Two Pointers - TC: O(N), SC: O(1)
 ```
     public ListNode reverseList(ListNode head) {

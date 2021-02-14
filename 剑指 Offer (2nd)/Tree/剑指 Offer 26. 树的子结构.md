@@ -1,22 +1,7 @@
-import org.testng.Assert;
-import org.testng.annotations.Test;
-
-import java.util.LinkedList;
-import java.util.Queue;
-
-
-public class SolutionSpec {
-
-    @Test
-    public void testSolution() {
-        Sol sol = new Sol();
-        int[] arr = new int[]{6, 4, 2, 1};
-
-    }
-}
-
-
-class Sol {
+##剑指 Offer 26. 树的子结构 - Medium - https://leetcode-cn.com/problems/shu-de-zi-jie-gou-lcof/
+![offer 26](imgs/offer 26.png)
+###Solution - DFS - TC: O(N), SC: O(1)
+```
     public boolean isSubStructure(TreeNode A, TreeNode B) {
         return (A != null && B != null) && (recur(A, B) || isSubStructure(A.left, B) || isSubStructure(A.right, B));
     }
@@ -26,7 +11,7 @@ class Sol {
         if (A == null || A.val != B.val) return false;
         return recur(A.left, B.left) && recur(A.right, B.right);
     }
-
+    
     static class TreeNode {
         int val;
         TreeNode left;
@@ -36,5 +21,5 @@ class Sol {
             val = x;
         }
     }
-//896
-}
+```
+![offer 26_1](imgs/offer 26_1.png)
