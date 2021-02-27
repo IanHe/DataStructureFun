@@ -1,6 +1,6 @@
 ##剑指 Offer 31. 栈的压入、弹出序列 - Medium - https://leetcode-cn.com/problems/zhan-de-ya-ru-dan-chu-xu-lie-lcof/
 ###same as: https://leetcode-cn.com/problems/validate-stack-sequences/
-![offer 32](imgs/offer 31.png)
+![offer 31](imgs/offer 31.png)
 ###Solution - Subsidiary Stack - TC: O(N), SC: O(N)
 ###https://leetcode-cn.com/problems/zhan-de-ya-ru-dan-chu-xu-lie-lcof/solution/mian-shi-ti-31-zhan-de-ya-ru-dan-chu-xu-lie-mo-n-2/
 ```
