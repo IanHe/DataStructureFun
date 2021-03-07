@@ -1,20 +1,8 @@
-import org.testng.Assert;
-import org.testng.annotations.Test;
-
-import java.util.*;
-
-
-public class SolutionSpec {
-
-    @Test
-    public void testSolution() {
-        Sol sol = new Sol();
-
-    }
-}
-
-
-class Sol {
+##剑指 Offer 49. 丑数 - Medium - https://leetcode-cn.com/problems/chou-shu-lcof/
+###same as: https://leetcode.com/problems/ugly-number-ii/
+![img of offer 49](imgs/offer%2049.png)
+###Solution - DP - TC: O(N), SC: O(N)
+```
     public int nthUglyNumber(int n) {
         int a = 0, b = 0, c = 0;
         int[] dp = new int[n];
@@ -28,6 +16,4 @@ class Sol {
         }
         return dp[n - 1];
     }
-
-//896
-}
+```
