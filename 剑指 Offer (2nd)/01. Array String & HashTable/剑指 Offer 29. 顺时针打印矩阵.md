@@ -1,6 +1,6 @@
 ##剑指 Offer 29. 顺时针打印矩阵 - Easy - https://leetcode-cn.com/problems/shun-shi-zhen-da-yin-ju-zhen-lcof/
 ###same as: https://leetcode-cn.com/problems/spiral-matrix/
-![offer 29](../Tree/imgs/offer%2029.png)
+![offer 29](../09.%20Tree/imgs/offer%2029.png)
 ###Solution - TC: O(M * N), SC: O(1)
 ###https://leetcode-cn.com/problems/shun-shi-zhen-da-yin-ju-zhen-lcof/solution/mian-shi-ti-29-shun-shi-zhen-da-yin-ju-zhen-she-di/
 ```

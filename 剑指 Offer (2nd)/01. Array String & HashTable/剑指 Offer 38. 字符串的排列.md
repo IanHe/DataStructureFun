@@ -2,6 +2,7 @@
 ![img of offer_38](imgs/offer%2038.png)
 ###Solution 1 - DFS & Prune - TC: O(N !N), SC: O(N^2)
 ###https://leetcode-cn.com/problems/zi-fu-chuan-de-pai-lie-lcof/solution/mian-shi-ti-38-zi-fu-chuan-de-pai-lie-hui-su-fa-by/
+![img of offer_38_I](imgs/offer%2038_I.png)
 ```
     public String[] permutation(String s) {
         List<String> res = new LinkedList<>();

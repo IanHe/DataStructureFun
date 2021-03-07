@@ -1,22 +1,8 @@
-import org.testng.Assert;
-import org.testng.annotations.Test;
-
-import java.util.*;
-
-
-public class SolutionSpec {
-
-    @Test
-    public void testSolution() {
-        Sol sol = new Sol();
-        System.out.println(sol.translateNum(12258));
-        Assert.assertEquals(sol.translateNum(12258), 5);
-    }
-}
-
-
-class Sol {
-
+##剑指 Offer 46. 把数字翻译成字符串 - Medium - https://leetcode-cn.com/problems/ba-shu-zi-fan-yi-cheng-zi-fu-chuan-lcof/
+![img of offer 46](imgs/offer%2046.png)
+###Solution - DP - TC: O(N), SC: O(N)
+###https://leetcode-cn.com/problems/ba-shu-zi-fan-yi-cheng-zi-fu-chuan-lcof/solution/mian-shi-ti-46-ba-shu-zi-fan-yi-cheng-zi-fu-chua-6/
+```
     /*
         dp[0] = 1
         dp[1] = 1
@@ -33,7 +19,5 @@ class Sol {
         }
         return cur;
     }
-
-
-//896
-}
+```
+![img of offer 46_1](imgs/offer%2046_1.png)
