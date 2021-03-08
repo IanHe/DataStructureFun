@@ -15,7 +15,7 @@
 
 0 <= 数组长度 <= 50000
 ```
-###Solution - Merge Sort - TC: O(N logN)
+###Solution - Merge Sort - TC: O(N logN), SC: O(N)
 ###https://leetcode-cn.com/problems/shu-zu-zhong-de-ni-xu-dui-lcof/solution/jian-zhi-offer-51-shu-zu-zhong-de-ni-xu-pvn2h/
 ```
     public int reversePairs(int[] nums) {
@@ -49,3 +49,4 @@
         return count;
     }
 ```
+![img of offer 51_1](imgs/offer%2051_1.png)

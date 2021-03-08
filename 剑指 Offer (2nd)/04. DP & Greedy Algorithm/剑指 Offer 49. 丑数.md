@@ -4,16 +4,17 @@
 ###Solution - DP - TC: O(N), SC: O(N)
 ```
     public int nthUglyNumber(int n) {
-        int a = 0, b = 0, c = 0;
+        int i2 = 0, i3 = 0, i5 = 0; // index for ugly number: 2, 3, 5, starting index: 0
         int[] dp = new int[n];
         dp[0] = 1;
         for (int i = 1; i < n; i++) {
-            int n2 = dp[a] * 2, n3 = dp[b] * 3, n5 = dp[c] * 5;
+            int n2 = dp[i2] * 2, n3 = dp[i3] * 3, n5 = dp[i5] * 5;
             dp[i] = Math.min(Math.min(n2, n3), n5);
-            if (dp[i] == n2) a++;
-            if (dp[i] == n3) b++;
-            if (dp[i] == n5) c++;
+            if (dp[i] == n2) i2++;
+            if (dp[i] == n3) i3++;
+            if (dp[i] == n5) i5++;
         }
         return dp[n - 1];
     }
 ```
+![img of offer 49_1](imgs/offer%2049_1.png)

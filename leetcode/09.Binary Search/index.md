@@ -10,3 +10,4 @@
 ####74. Search a 2D Matrix - medium - https://leetcode.com/problems/search-a-2d-matrix/
 ####367. Valid Perfect Square - easy - https://leetcode.com/problems/valid-perfect-square/
 ####153. Find Minimum in Rotated Sorted Array - medium - https://leetcode.com/problems/find-minimum-in-rotated-sorted-array/
+####34. Find First and Last Position of Element in Sorted Array - medium - https://leetcode.com/problems/find-first-and-last-position-of-element-in-sorted-array/
