@@ -1,17 +1,8 @@
-import org.testng.annotations.Test;
-
-
-public class SolutionSpec {
-
-    @Test
-    public void testSolution() {
-        Sol sol = new Sol();
-        System.out.println(2 & 3);
-    }
-}
-
-
-class Sol {
+##剑指 Offer 56 - II. 数组中数字出现的次数 II - Medium - https://leetcode-cn.com/problems/shu-zu-zhong-shu-zi-chu-xian-de-ci-shu-ii-lcof/
+![img of offer 56_II](imgs/offer%2056_II.png)
+###Solution - Bit Operation - TC: O(N), SC: O(1)
+###https://leetcode-cn.com/problems/shu-zu-zhong-shu-zi-chu-xian-de-ci-shu-ii-lcof/solution/mian-shi-ti-56-ii-shu-zu-zhong-shu-zi-chu-xian-d-4/
+```
     public int singleNumber(int[] nums) {
         int[] counts = new int[32];
         for (int num : nums) {
@@ -27,6 +18,4 @@ class Sol {
         }
         return res;
     }
-
-//896
-}
+```
