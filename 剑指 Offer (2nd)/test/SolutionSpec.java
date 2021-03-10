@@ -8,44 +8,30 @@ public class SolutionSpec {
     @Test
     public void testSolution() {
         Sol sol = new Sol();
-        System.out.println(sol.climbStairs(5));
+        int[] res = new int[]{1, 1, 1, 2, 2, 2, 3, 3};
+        System.out.println(sol.reverseWords("Let's take LeetCode contest"));
     }
 }
 
 
 class Sol {
 
-    public ListNode swapPairs(ListNode head) {
-        if (head == null || head.next == null) return head;
-        ListNode newHead = head.next, pre = null;
-        while (head != null && head.next != null) {
-            // switch 2
-            ListNode next = head.next;
-            head.next = next.next;
-            next.next = head;
-            // move window
-            if(pre != null) pre.next = next;
-            pre = head;
-            head = head.next;
+    public String reverseWords(String s) {
+        if (s.length() == 1) return s;
+        char[] chs = s.toCharArray();
+        int i = 0, j = 0;
+        while (j < chs.length) {
+            while (j < chs.length && chs[j] == ' ') j++;
+            i = j;
+            while (j < chs.length && chs[j] != ' ') j++;
+            int left = i, right = j - 1;
+            while (left < right) {
+                char tmp = chs[left];
+                chs[left++] = chs[right];
+                chs[right--] = tmp;
+            }
         }
-        return newHead;
-    }
-
-    public class ListNode {
-        int val;
-        ListNode next;
-
-        ListNode() {
-        }
-
-        ListNode(int val) {
-            this.val = val;
-        }
-
-        ListNode(int val, ListNode next) {
-            this.val = val;
-            this.next = next;
-        }
+        return String.valueOf(chs);
     }
 //896
 }
