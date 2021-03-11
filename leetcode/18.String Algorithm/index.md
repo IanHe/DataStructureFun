@@ -6,7 +6,7 @@
 ![Image of /string_traversal](imgs//string_traversal.png)
 ###String Compare - Compare Reference Address vs Compare Value
 ![Image of /string_compare](imgs//string_compare.png)
-###ASCCII Code => a-z：97-122, A-Z：65-90, 0-9：48-57
+###ASCII Code => a-z：97-122, A-Z：65-90, 0-9：48-57
 ###Leetcode:
 ####709. To Lower Case - easy - https://leetcode.com/problems/to-lower-case/
 ####58. Length of Last Word - easy - https://leetcode.com/problems/length-of-last-word/

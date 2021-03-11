@@ -8,30 +8,26 @@ public class SolutionSpec {
     @Test
     public void testSolution() {
         Sol sol = new Sol();
-        int[] res = new int[]{1, 1, 1, 2, 2, 2, 3, 3};
-        System.out.println(sol.reverseWords("Let's take LeetCode contest"));
+        System.out.println(sol.myPow(2, 3));
     }
 }
 
 
 class Sol {
-
-    public String reverseWords(String s) {
-        if (s.length() == 1) return s;
-        char[] chs = s.toCharArray();
-        int i = 0, j = 0;
-        while (j < chs.length) {
-            while (j < chs.length && chs[j] == ' ') j++;
-            i = j;
-            while (j < chs.length && chs[j] != ' ') j++;
-            int left = i, right = j - 1;
-            while (left < right) {
-                char tmp = chs[left];
-                chs[left++] = chs[right];
-                chs[right--] = tmp;
-            }
+    public double myPow(double x, int n) {
+        if (x == 0) return 0;
+        long b = n;
+        if (b < 0) {
+            x = 1 / x;
+            b = -b;
         }
-        return String.valueOf(chs);
+        double res = 1;
+        while (b > 0) {
+            if ((b & 1) == 1) res *= x;
+            x *= x;
+            b >>= 1;
+        }
+        return res;
     }
 //896
 }
