@@ -8,26 +8,20 @@ public class SolutionSpec {
     @Test
     public void testSolution() {
         Sol sol = new Sol();
-        System.out.println(sol.myPow(2, 3));
+        System.out.println(sol.mySqrt(8));
     }
 }
 
 
 class Sol {
-    public double myPow(double x, int n) {
-        if (x == 0) return 0;
-        long b = n;
-        if (b < 0) {
-            x = 1 / x;
-            b = -b;
-        }
-        double res = 1;
-        while (b > 0) {
-            if ((b & 1) == 1) res *= x;
-            x *= x;
-            b >>= 1;
-        }
-        return res;
+    public int mySqrt(int x) {
+        if(x <= 1) return x;
+        int num = x/2;
+        while(num * num > x)
+            num /= 2;
+        while((num+1) * (num+1) <= x)
+            num += 1;
+        return num;
     }
 //896
 }

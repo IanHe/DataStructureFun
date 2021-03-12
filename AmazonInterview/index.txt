@@ -10,3 +10,21 @@ Trees and Graphs:
 Recursion:
     05.Generic Recursion & Tree Recursion
     06.Divide Conquer &  Backtracking
+    07.DFS & BFS
+
+Sorting and Searching
+    09.Binary Search
+
+
+
+
+-- Pay Attention --
+    18.String Algorithm
+        10. Regular Expression Matching - hard - https://leetcode.com/problems/regular-expression-matching/
+        (solution 2 - DP) 5. Longest Palindromic Substring - medium - https://leetcode.com/problems/longest-palindromic-substring/
+    04.Tree BinaryTree BinarySearchTree
+        94. Binary Tree Inorder Traversal - medium - https://leetcode.com/problems/binary-tree-inorder-traversal/
+        144. Binary Tree Preorder Traversal - medium - https://leetcode.com/problems/binary-tree-preorder-traversal/
+        145. Binary Tree Postorder Traversal - medium - https://leetcode.com/problems/binary-tree-postorder-traversal/
+    07.DFS & BFS
+        126. Word Ladder II - hard - https://leetcode.com/problems/word-ladder-ii/
