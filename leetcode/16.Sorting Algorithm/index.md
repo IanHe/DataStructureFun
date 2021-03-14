@@ -19,7 +19,38 @@
 ####2. 重新排序数列，所有元素比基准值小的摆放在基准前面，所有元素比基准值大的摆在基准的后面（相同的数可以到任一边）。在这个分区退出之后，该基准就处于数列的中间位置。这个称为分区（partition）操作；
 ####3. 递归地（recursive）把小于基准值元素的子数列和大于基准值元素的子数列排序。
 ![Image of /quick_sort](imgs//quick_sort.gif)
-![Image of /quick_sort_1](imgs//quick_sort_1.jpg)
+```
+    /*
+        Quick Sort
+     */
+    public void quickSort(int[] arr) {
+        dfs(arr, 0, arr.length - 1);
+    }
+
+    private void dfs(int[] arr, int i, int j) {
+        if (i >= j) return;
+        int pivot = partition(arr, i, j);
+        dfs(arr, 0, pivot - 1);
+        dfs(arr, pivot + 1, j);
+    }
+
+    // return pivot index, num greater than pivot on the right, adverse on the left
+    private int partition(int[] arr, int i, int j) {
+        int counter = j;
+        for (int k = j; k > i; k--) {
+            if (arr[k] > arr[i]) { // use arr[i] as pivot
+                int tmp = arr[k];
+                arr[k] = arr[counter];
+                arr[counter--] = tmp;
+            }
+        }
+        // switch pivot with counter, because counter is the index for pivot now
+        int tmp = arr[i];
+        arr[i] = arr[counter];
+        arr[counter] = tmp;
+        return counter;
+    }
+```
 ###Merge Sort
 ###归并排序是建立在归并操作上的一种有效的排序算法。该算法是采用分治法（Divide and Conquer）的一个非常典型的应用。
 ###将已有序的子序列合并，得到完全有序的序列；即先使每个子序列有序，再使子序列段间有序。若将两个有序表合并成一个有序表，称为2-路归并:
@@ -27,11 +58,34 @@
 ####2.对这两个子序列分别采用归并排序；
 ####3.将两个排序好的子序列合并成一个最终的排序序列。
 ![Image of /quick_sort](imgs//merge_sort.gif)
-![Image of /quick_sort_1](imgs//merge_sort_1.jpg)
-####Note: Three While Loops to merge 2 sorted arrays
-####First while loop => when the first while loop is finished: i or j index will be finished
-####The rest two while loops => if i is not finished put the rest of i arrays into temp or if j is not finished...
-![Image of /quick_sort_2](imgs//merge_sort_2.jpg)
+```
+    /*
+        Merge Sort
+     */
+    public void mergeSort(int[] arr) {
+        dfs(arr, 0, arr.length - 1);
+    }
+
+    private void dfs(int[] arr, int i, int j) {
+        if (i >= j)
+            return;
+        int mid = (i + j) >> 1;
+        dfs(arr, i, mid);
+        dfs(arr, mid + 1, j);
+        merge(arr, i, mid, j);
+    }
+
+    private void merge(int[] arr, int start, int mid, int end) {
+        int[] tmp = new int[end - start + 1];
+        int i = start, j = mid + 1, k = 0;
+        while (i <= mid && j <= end) {
+            tmp[k++] = arr[i] <= arr[j] ? arr[i++] : arr[j++];
+        }
+        while (i <= mid) tmp[k++] = arr[i++];
+        while (j <= end) tmp[k++] = arr[j++];
+        System.arraycopy(tmp, 0, arr, start, tmp.length);
+    }
+```
 ###Quick Sort vs Merge Sort
 ![Image of /quick_vs_merge_sort](imgs//quick_vs_merge_sort.jpg)
 <br></br>
@@ -88,7 +142,7 @@
 ###Leetcode:
 ####1122. Relative Sort Array - easy - https://leetcode.com/problems/relative-sort-array/
 ####242. Valid Anagram - easy - https://leetcode.com/problems/valid-anagram/
-####https://leetcode-cn.com/problems/design-a-leaderboard/
+####1244. Design A Leaderboard - Medium - https://leetcode.com/problems/design-a-leaderboard/
 ####56. Merge Intervals - medium - https://leetcode.com/problems/merge-intervals/
 ####剑指 Offer 51. 数组中的逆序对 - hard - https://leetcode-cn.com/problems/shu-zu-zhong-de-ni-xu-dui-lcof/
 ####493. Reverse Pairs - hard - https://leetcode.com/problems/reverse-pairs/

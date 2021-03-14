@@ -14,6 +14,8 @@ Recursion:
 
 Sorting and Searching
     09.Binary Search
+    12.Advanced Search
+    16.Sorting Algorithm
 
 
 
@@ -26,5 +28,14 @@ Sorting and Searching
         94. Binary Tree Inorder Traversal - medium - https://leetcode.com/problems/binary-tree-inorder-traversal/
         144. Binary Tree Preorder Traversal - medium - https://leetcode.com/problems/binary-tree-preorder-traversal/
         145. Binary Tree Postorder Traversal - medium - https://leetcode.com/problems/binary-tree-postorder-traversal/
+    06.Divide Conquer &  Backtracking
+        (using long instead of int)50. Pow(x, n) - medium - https://leetcode.com/problems/powx-n/
     07.DFS & BFS
         126. Word Ladder II - hard - https://leetcode.com/problems/word-ladder-ii/
+    09.Binary Search
+        69. Sqrt(x) - easy - https://leetcode.com/problems/sqrtx/
+        34. Find First and Last Position of Element in Sorted Array - Medium - https://leetcode.com/problems/find-first-and-last-position-of-element-in-sorted-array/
+    12.Advanced Search
+        37. Sudoku Solver - hard - https://leetcode.com/problems/sudoku-solver/
+        1091. Shortest Path in Binary Matrix - medium -  https://leetcode.com/problems/shortest-path-in-binary-matrix/
+        773. Sliding Puzzle - hard - https://leetcode.com/problems/sliding-puzzle/
