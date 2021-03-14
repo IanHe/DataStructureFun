@@ -1,39 +1,42 @@
+import jdk.dynalink.linker.ConversionComparator;
 import org.testng.annotations.Test;
 
-import java.util.Arrays;
+import java.util.*;
 
 
 public class SolutionSpec {
     @Test
     public void testSolution() {
         Sol sol = new Sol();
-        int[][] arr = {{1, 3}, {2, 6}, {8, 10}, {15, 18}};
-        int[][] res = sol.merge(arr);
-        System.out.println(res);
+
+        System.out.println(sol.coinChange(new int[]{1, 5, 6}, 10));
     }
 }
 
 
 class Sol {
 
-    public int[][] merge(int[][] intervals) {
-        if (intervals.length == 1) return intervals;
-        Arrays.sort(intervals, (arr1, arr2) -> arr1[0] - arr2[0]);
-        int[][] res = new int[intervals.length][2];
-        res[0][0] = intervals[0][0];
-        res[0][1] = intervals[0][1];
-        int i = 0;
-        for (int j = 1; j < intervals.length; j++) {
-            int x = intervals[j][0], y = intervals[j][1];
-            if(x <= res[i][1]){
-                // merge
-                res[i][1] = Math.max(res[i][1], y);
-            }else{
-                res[++i][0] = x;
-                res[i][1] = y;
+    int ans = Integer.MAX_VALUE;
+
+    public int coinChange(int[] coins, int amount) {
+        Arrays.sort(coins);
+        dfs(coins, coins.length - 1, amount, 0);
+        return ans == Integer.MAX_VALUE ? -1 : ans;
+    }
+
+    public void dfs(int[] coins, int index, int amount, int count) {
+        if (index < 0) return;
+
+        for (int c = amount / coins[index]; c >= 0; c--) {
+            int leftAmount = amount - c * coins[index];
+            int newCount = count + c;
+            if (leftAmount == 0) {
+                ans = Math.min(ans, newCount);
+                break;//剪枝1
             }
+            if (newCount + 1 >= ans) break; //剪枝2
+            dfs(coins, index - 1, leftAmount, newCount);
         }
-        return res;
     }
 //896
 }
