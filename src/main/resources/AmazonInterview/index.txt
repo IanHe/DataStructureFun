@@ -19,6 +19,7 @@ Sorting and Searching
 
 Dynamic Programming
     10.Dynamic Programming
+    17.Advanced DP
 
 
 
