@@ -43,3 +43,6 @@ Dynamic Programming
         37. Sudoku Solver - hard - https://leetcode.com/problems/sudoku-solver/
         1091. Shortest Path in Binary Matrix - medium -  https://leetcode.com/problems/shortest-path-in-binary-matrix/
         773. Sliding Puzzle - hard - https://leetcode.com/problems/sliding-puzzle/
+    17.Advanced DP
+        300. Longest Increasing Subsequence - medium - https://leetcode.com/problems/longest-increasing-subsequence/
+        91. Decode Ways - medium - https://leetcode.com/problems/decode-ways/
