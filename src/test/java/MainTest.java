@@ -1,46 +1,30 @@
-import org.testng.annotations.Test;
 import org.testng.Assert;
+import org.testng.annotations.Test;
 
-import java.util.HashMap;
+import java.util.*;
 
 public class MainTest {
     @Test
     public void test() {
         Solution sol = new Solution();
-        System.out.println(Integer.pa);
+        System.out.println(sol.jump(new int[]{7, 0, 9, 6, 9, 6, 1, 7, 9, 0, 1, 2, 9, 0, 3}));
     }
 }
 
 class Solution {
-    public int numDecodings(String s) {
-        HashMap<Integer, Integer> memo = new HashMap<>();
-        return getAns(s.toCharArray(), 0, memo);
-    }
-
-    private int getAns(char[] chs, int start, HashMap<Integer, Integer> memo) {
-        if (start == chs.length) {
-            return 1;
-        }
-        if (chs[start] == '0') {
-            return 0;
-        }
-        //判断之前是否计算过
-        int m = memo.getOrDefault(start, -1);
-        if (m != -1) {
-            return m;
-        }
-        int ans1 = getAns(chs, start + 1, memo);
-        int ans2 = 0;
-        if (start < chs.length - 1) {
-            int ten = (chs[start] - '0') * 10;
-            int one = chs[start + 1] - '0';
-            if (ten + one <= 26) {
-                ans2 = getAns(chs, start + 2, memo);
+    public int jump(int[] nums) {
+        if (nums[0] == 0 || nums.length == 1) return 0;
+        int maxReach = nums[0], rightBound = nums[0];
+        int jump = 1;
+        for (int i = 1; i < nums.length - 1 && i <= maxReach && maxReach < nums.length - 1; i++) {
+            if (i + nums[i] > maxReach) {
+                maxReach = i + nums[i];
+            }
+            if (i == rightBound) {
+                rightBound = maxReach;
+                jump++;
             }
         }
-        //将结果保存
-        memo.put(start, ans1 + ans2);
-        return ans1 + ans2;
+        return jump;
     }
-
 }

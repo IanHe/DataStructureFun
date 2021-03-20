@@ -21,6 +21,14 @@ Dynamic Programming
     10.Dynamic Programming
     17.Advanced DP
 
+Design
+    15.Bloom  filter, LRU Cache
+    02.Stack Queue PriorityQueue Dequeue
+
+Others
+    03.Hash Map Set
+    08.Greedy Algorithm
+    11.Trie & Disjoint Sets
 
 
 
@@ -46,3 +54,5 @@ Dynamic Programming
     17.Advanced DP
         300. Longest Increasing Subsequence - medium - https://leetcode.com/problems/longest-increasing-subsequence/
         91. Decode Ways - medium - https://leetcode.com/problems/decode-ways/
+    02.Stack Queue PriorityQueue Dequeue
+        239. Sliding Window Maximum - hard - https://leetcode.com/problems/sliding-window-maximum/
