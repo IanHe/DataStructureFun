@@ -29,6 +29,7 @@ Others
     03.Hash Map Set
     08.Greedy Algorithm
     11.Trie & Disjoint Sets
+    14.Bit Operation
 
 
 
@@ -56,3 +57,7 @@ Others
         91. Decode Ways - medium - https://leetcode.com/problems/decode-ways/
     02.Stack Queue PriorityQueue Dequeue
         239. Sliding Window Maximum - hard - https://leetcode.com/problems/sliding-window-maximum/
+    11.Trie & Disjoint Sets
+        212. Word Search II - hard - https://leetcode.com/problems/word-search-ii/
+    14.Bit Operation
+        190. Reverse Bits - easy - https://leetcode.com/problems/reverse-bits/
