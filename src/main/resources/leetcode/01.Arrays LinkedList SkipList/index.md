@@ -132,3 +132,4 @@ public class LinkedList<E>
 ####1. Two Sum - easy - https://leetcode.com/problems/two-sum/
 ####66. Plus One - easy - https://leetcode.com/problems/plus-one/
 ####80. Remove Duplicates from Sorted Array II - medium - https://leetcode.com/problems/remove-duplicates-from-sorted-array-ii/
+####3. Longest Substring Without Repeating Characters - medium - https://leetcode.com/problems/longest-substring-without-repeating-characters/

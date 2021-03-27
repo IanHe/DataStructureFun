@@ -8,27 +8,38 @@ public class MainTest {
     @Test
     public void test() {
         Solution sol = new Solution();
-        int[][] image = {{1, 1, 1}, {1, 1, 0}, {1, 0, 1}};
-        sol.floodFill(image, 1, 1, 1);
-        System.out.println(image);
+        System.out.println(Integer.MAX_VALUE);
+        System.out.println(sol.myAtoi("  -91283472ab12"));
     }
 }
 
 class Solution {
-    public int[][] floodFill(int[][] image, int sr, int sc, int newColor) {
-        int color = image[sr][sc];
-        if (color != newColor) dfs(image, sr, sc, color, newColor);
-        return image;
-    }
-
-    public void dfs(int[][] image, int r, int c, int color, int newColor) {
-        if (image[r][c] == color) {
-            image[r][c] = newColor;
-            if (r >= 1) dfs(image, r - 1, c, color, newColor);
-            if (c >= 1) dfs(image, r, c - 1, color, newColor);
-            if (r + 1 < image.length) dfs(image, r + 1, c, color, newColor);
-            if (c + 1 < image[0].length) dfs(image, r, c + 1, color, newColor);
+    public int myAtoi(String s) {
+        if (s.length() == 0) return 0;
+        char[] arr = s.toCharArray();
+        int startIndex = 0;
+        while (startIndex < arr.length && arr[startIndex] == ' ') startIndex++;
+        if (startIndex >= arr.length) return 0;
+        boolean sign = arr[startIndex] != '-';
+        if (arr[startIndex] == '+' || arr[startIndex] == '-') startIndex++;
+        int num = 0;
+        int maxValueDivideTen = Integer.MAX_VALUE / 10;
+        for (int i = startIndex; i < arr.length; i++) {
+            if (arr[i] >= '0' && arr[i] <= '9') {
+                int digit = arr[i] - '0';
+                if(num > maxValueDivideTen)
+                    return sign? Integer.MAX_VALUE : Integer.MIN_VALUE;
+                if (sign && num == maxValueDivideTen && digit >= 7)
+                    return Integer.MAX_VALUE;
+                if (!sign && num == maxValueDivideTen && digit >= 8)
+                    return Integer.MIN_VALUE;
+                num = num * 10 + digit;
+            } else {
+                // digit end, should return the number
+                return sign ? num : -num;
+            }
         }
+        return sign ? num : -num;
     }
 
 
