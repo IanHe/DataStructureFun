@@ -9,7 +9,7 @@ Trees and Graphs:
 
 Recursion:
     05.Generic Recursion & Tree Recursion
-    06.Divide Conquer &  Backtracking
+    06.Divide Conquer & Backtracking
     07.DFS & BFS
 
 Sorting and Searching
@@ -41,6 +41,8 @@ Others
         94. Binary Tree Inorder Traversal - medium - https://leetcode.com/problems/binary-tree-inorder-traversal/
         144. Binary Tree Preorder Traversal - medium - https://leetcode.com/problems/binary-tree-preorder-traversal/
         145. Binary Tree Postorder Traversal - medium - https://leetcode.com/problems/binary-tree-postorder-traversal/
+        101. Symmetric Tree - Easy - https://leetcode.com/problems/symmetric-tree/
+        207. Course Schedule - Medium - https://leetcode.com/problems/course-schedule/
     06.Divide Conquer &  Backtracking
         (using long instead of int)50. Pow(x, n) - medium - https://leetcode.com/problems/powx-n/
     07.DFS & BFS

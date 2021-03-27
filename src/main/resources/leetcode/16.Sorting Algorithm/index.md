@@ -11,6 +11,44 @@
 <br></br>
 ## Elementary Sorting Algorithms - Time Complexity:O(n^2)
 ![Image of /elementary_sorting](imgs//elementary_sorting.jpg)
+```
+    // swap the smallest to the beggining by iterate (0 .. n)
+    // selection sort & return swap count
+    public int selectionSort(int[] nums) {
+        int count = 0;
+        for (int i = 0; i < nums.length; i++) {
+            for (int j = i + 1; j < nums.length; j++) {
+                if (nums[i] > nums[j]) {
+                    swap(nums, i, j);
+                    count++;
+                }
+            }
+        }
+        return count;
+    }
+
+    // swap the biggest to the end by iterate (0 .. n)
+    // bubble sort & return swap count
+    public int bubbleSort(int[] nums) {
+        int count = 0;
+        for (int i = 0; i < nums.length; i++) {
+            // because we need to compare nums[j] with nums[j+1], so j < (nums.length -i) - 1
+            for (int j = 0; j < nums.length - 1 - i; j++) {
+                if (nums[j] > nums[j + 1]) {
+                    count++;
+                    swap(nums, j, j + 1);
+                }
+            }
+        }
+        return count;
+    }
+    
+    private void swap(int[] nums, int i, int j) {
+        int tmp = nums[i];
+        nums[i] = nums[j];
+        nums[j] = tmp;
+    }
+```
 <br></br>
 ## Advanced Sorting
 ###Quick Sort
@@ -23,32 +61,37 @@
     /*
         Quick Sort
      */
-    public void quickSort(int[] arr) {
-        dfs(arr, 0, arr.length - 1);
+    public void quickSort(int[] nums) {
+        _quickSort(nums, 0, nums.length - 1);
     }
 
-    private void dfs(int[] arr, int i, int j) {
+    // helper function for recurring
+    private void _quickSort(int[] nums, int i, int j) {
+        // terminator
         if (i >= j) return;
-        int pivot = partition(arr, i, j);
-        dfs(arr, 0, pivot - 1);
-        dfs(arr, pivot + 1, j);
+        int pivot = partition(nums, i, j);
+        _quickSort(nums, i, pivot - 1);
+        _quickSort(nums, pivot + 1, j);
     }
 
-    // return pivot index, num greater than pivot on the right, adverse on the left
-    private int partition(int[] arr, int i, int j) {
-        int counter = j;
-        for (int k = j; k > i; k--) {
-            if (arr[k] > arr[i]) { // use arr[i] as pivot
-                int tmp = arr[k];
-                arr[k] = arr[counter];
-                arr[counter--] = tmp;
+    private int partition(int[] nums, int left, int right) {
+        // use nums[left] as pivot
+        int index = left;
+        // move all nums which is smaller than nums[left] to the left
+        for (int i = left + 1; i <= right; i++) {
+            if (nums[i] < nums[left]) {
+                swap(nums, i, ++index);
             }
         }
-        // switch pivot with counter, because counter is the index for pivot now
-        int tmp = arr[i];
-        arr[i] = arr[counter];
-        arr[counter] = tmp;
-        return counter;
+        // all numbers in (left+1, index) would be smaller than left, swap left with index, and return index as the pivot
+        swap(nums, left, index);
+        return index;
+    }
+
+    private void swap(int[] nums, int i, int j) {
+        int tmp = nums[i];
+        nums[i] = nums[j];
+        nums[j] = tmp;
     }
 ```
 ###Merge Sort
@@ -66,9 +109,10 @@
         dfs(arr, 0, arr.length - 1);
     }
 
+    // help function for recurring
     private void dfs(int[] arr, int i, int j) {
-        if (i >= j)
-            return;
+        // terminator
+        if (i >= j) return;
         int mid = (i + j) >> 1;
         dfs(arr, i, mid);
         dfs(arr, mid + 1, j);
@@ -76,6 +120,7 @@
     }
 
     private void merge(int[] arr, int start, int mid, int end) {
+        // new temp array to store merged array
         int[] tmp = new int[end - start + 1];
         int i = start, j = mid + 1, k = 0;
         while (i <= mid && j <= end) {
@@ -83,13 +128,15 @@
         }
         while (i <= mid) tmp[k++] = arr[i++];
         while (j <= end) tmp[k++] = arr[j++];
-        System.arraycopy(tmp, 0, arr, start, tmp.length);
+        // now k is the length of tmp
+        System.arraycopy(tmp, 0, arr, start, k);
     }
 ```
 ###Quick Sort vs Merge Sort
 ![Image of /quick_vs_merge_sort](imgs//quick_vs_merge_sort.jpg)
 <br></br>
 ##Heap Sort - We can use priority queue instead of self-defined heap
+![Image of heap_structure](imgs/heap_structure.png)
 ```
     public void sort(int arr[]) {
         int n = arr.length;
@@ -146,3 +193,9 @@
 ####56. Merge Intervals - medium - https://leetcode.com/problems/merge-intervals/
 ####剑指 Offer 51. 数组中的逆序对 - hard - https://leetcode-cn.com/problems/shu-zu-zhong-de-ni-xu-dui-lcof/
 ####493. Reverse Pairs - hard - https://leetcode.com/problems/reverse-pairs/
+<br></br>
+###Did the code, but not included in the project
+####4. Median of Two Sorted Arrays - hard - https://leetcode.com/problems/median-of-two-sorted-arrays
+####167. Two Sum II - Input array is sorted - easy - https://leetcode.com/problems/two-sum-ii-input-array-is-sorted 
+####347. Top K Frequent Elements - medium - https://leetcode.com/problems/top-k-frequent-elements
+####973. K Closest Points to Origin - medium - https://leetcode.com/problems/k-closest-points-to-origin/
