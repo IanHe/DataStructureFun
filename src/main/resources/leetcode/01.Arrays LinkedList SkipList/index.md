@@ -133,3 +133,8 @@ public class LinkedList<E>
 ####66. Plus One - easy - https://leetcode.com/problems/plus-one/
 ####80. Remove Duplicates from Sorted Array II - medium - https://leetcode.com/problems/remove-duplicates-from-sorted-array-ii/
 ####3. Longest Substring Without Repeating Characters - medium - https://leetcode.com/problems/longest-substring-without-repeating-characters/
+<br></br>
+###Did on LeetCode only
+####28. Implement strStr() - Easy - https://leetcode.com/problems/implement-strstr/
+####48. Rotate Image - Medium - https://leetcode.com/problems/rotate-image/
+####76. Minimum Window Substring - Hard - https://leetcode.com/problems/minimum-window-substring/
