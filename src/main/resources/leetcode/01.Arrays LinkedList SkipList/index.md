@@ -138,3 +138,6 @@ public class LinkedList<E>
 ####28. Implement strStr() - Easy - https://leetcode.com/problems/implement-strstr/
 ####48. Rotate Image - Medium - https://leetcode.com/problems/rotate-image/
 ####76. Minimum Window Substring - Hard - https://leetcode.com/problems/minimum-window-substring/
+####165. Compare Version Numbers - Medium - https://leetcode.com/problems/compare-version-numbers/
+####238. Product of Array Except Self - Medium - https://leetcode.com/problems/product-of-array-except-self/
+####268. Missing Number - Easy - https://leetcode.com/problems/missing-number/
