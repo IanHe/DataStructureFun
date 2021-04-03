@@ -141,3 +141,5 @@ public class LinkedList<E>
 ####165. Compare Version Numbers - Medium - https://leetcode.com/problems/compare-version-numbers/
 ####238. Product of Array Except Self - Medium - https://leetcode.com/problems/product-of-array-except-self/
 ####268. Missing Number - Easy - https://leetcode.com/problems/missing-number/
+####273. Integer to English Words - Hard - https://leetcode.com/problems/integer-to-english-words/
+####2. Add Two Numbers - Medium - https://leetcode.com/problems/add-two-numbers/

@@ -8,25 +8,44 @@ public class MainTest {
     @Test
     public void test() {
         Solution sol = new Solution();
-        System.out.println(sol.missingNumber(new int[]{3, 0, 1}));
+        Solution.Node head = new Solution.Node(3);
+        head.next = new Solution.Node()
     }
 }
 
 class Solution {
-    public int missingNumber(int[] nums) {
-        int len = nums.length;
-        int[] ans = new int[len + 1];
-        for(int i = 0; i< len; i++) {
-            if(nums[i] == i) {
-                ans[i] = 1;
-            }else if(nums[i] <= len && nums[i] >=0){
-                ans[nums[i]] = 1;
-            }
-        }
 
-        for (int i = 0; i < len + 1; i++) {
-            if(ans[i] == 0) return i;
+    public Node copyRandomList(Node head) {
+        if(head == null) return null;
+        Map<Integer, Node> map = new HashMap<>();
+        Node dummy = new Node(10001), node1 = head, node2 = dummy;
+        while(node1 != null) {
+            node2.next = new Node(node1.val);
+            map.put(node1.val, node2.next);
+            node1 = node1.next;
+            node2 = node2.next;
         }
-        return -1;
+        node1 = head;
+        node2 = dummy.next;
+        while(node1 != null) {
+            if(node1.random != null) {
+                node2.random = map.get(node1.random.val);
+            }
+            node1 = node1.next;
+            node2 = node2.next;
+        }
+        return dummy.next;
+    }
+
+    static class Node {
+        int val;
+        Node next;
+        Node random;
+
+        public Node(int val) {
+            this.val = val;
+            this.next = null;
+            this.random = null;
+        }
     }
 }
