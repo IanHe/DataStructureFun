@@ -8,44 +8,57 @@ public class MainTest {
     @Test
     public void test() {
         Solution sol = new Solution();
-        Solution.Node head = new Solution.Node(3);
-        head.next = new Solution.Node()
+        String s = sol.longestPalindrome("babad");
+        System.out.println(s);
     }
 }
 
 class Solution {
 
-    public Node copyRandomList(Node head) {
-        if(head == null) return null;
-        Map<Integer, Node> map = new HashMap<>();
-        Node dummy = new Node(10001), node1 = head, node2 = dummy;
-        while(node1 != null) {
-            node2.next = new Node(node1.val);
-            map.put(node1.val, node2.next);
-            node1 = node1.next;
-            node2 = node2.next;
-        }
-        node1 = head;
-        node2 = dummy.next;
-        while(node1 != null) {
-            if(node1.random != null) {
-                node2.random = map.get(node1.random.val);
+    /*
+        DP Function: dp[i][j] == true means S(i, j) is palindromic
+
+        dp[i][i] = true     // single character is palindromic
+        dp[i][i+1] = s.charAt(i) == s.charAt(i+1)
+        // if dp[i][j] need to be true then dp[i+1][j-1] == true && s.charAt(i) == s.charAt(j)
+        dp[i][j] = dp[i+1][j-1] && s.charAt(i) == s.charAt(j)
+     */
+    public String longestPalindrome(String s) {
+        int n = s.length();
+        boolean[][] dp = new boolean[n][n];
+        int[] ans = {0, 0};
+        for (int l = 0; l < n; ++l) { // l: length
+            for (int i = 0; i + l < n; ++i) {
+                int j = i + l;
+                if (l == 0) {
+                    dp[i][j] = true;
+                } else if (l == 1) {
+                    dp[i][j] = (s.charAt(i) == s.charAt(j));
+                } else {
+                    dp[i][j] = (s.charAt(i) == s.charAt(j) && dp[i + 1][j - 1]);
+                }
+                if (dp[i][j] && l + 1 > ans[1] - ans[0]) { // if j - i + 1 > ans.length() -> replace ans; j - i is equal l
+                    ans = new int[]{i, j};
+                }
             }
-            node1 = node1.next;
-            node2 = node2.next;
         }
-        return dummy.next;
+        return s.substring(ans[0], ans[1] + 1);
     }
 
-    static class Node {
+    public class ListNode {
         int val;
-        Node next;
-        Node random;
+        ListNode next;
 
-        public Node(int val) {
+        ListNode() {
+        }
+
+        ListNode(int val) {
             this.val = val;
-            this.next = null;
-            this.random = null;
+        }
+
+        ListNode(int val, ListNode next) {
+            this.val = val;
+            this.next = next;
         }
     }
 }
