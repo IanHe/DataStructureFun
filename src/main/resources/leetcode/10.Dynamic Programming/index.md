@@ -49,3 +49,6 @@ Third: write down: DP Equation
 ####121. Best Time to Buy and Sell Stock - easy - https://leetcode.com/problems/best-time-to-buy-and-sell-stock/
 ####122. Best Time to Buy and Sell Stock II - easy - https://leetcode.com/problems/best-time-to-buy-and-sell-stock-ii/
 ####123. Best Time to Buy and Sell Stock III - hard - https://leetcode.com/problems/best-time-to-buy-and-sell-stock-iii/
+<br></br>
+###Did on LeetCode only
+####139. Word Break - medium - https://leetcode.com/problems/word-break/
