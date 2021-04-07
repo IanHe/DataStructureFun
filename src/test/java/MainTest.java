@@ -1,33 +1,62 @@
 import org.testng.annotations.Test;
 
-import java.util.HashSet;
+import java.util.ArrayList;
 import java.util.List;
-import java.util.Set;
 
 public class MainTest {
     @Test
     public void test() {
         Solution sol = new Solution();
-        String str = "catsandog";
-        List<String> wordDict = List.of("cats", "dog", "an");
-        System.out.println(sol.wordBreak(str, wordDict));
+        MedianFinder mf = new MedianFinder();
+        mf.addNum(6);
+        System.out.println(mf.findMedian()); // 6
+        mf.addNum(10);
+        System.out.println(mf.findMedian()); // 8
+        mf.addNum(2);
+        System.out.println(mf.findMedian()); // 6
+        mf.addNum(6);
+        System.out.println(mf.findMedian());
+        mf.addNum(5);
+        System.out.println(mf.findMedian());
+        mf.addNum(6);
+        System.out.println(mf.findMedian());
+        mf.addNum(3);
+        System.out.println(mf.findMedian());
+        mf.addNum(1);
+        System.out.println(mf.findMedian());
+        mf.addNum(0);
+        System.out.println(mf.findMedian());
+        mf.addNum(0);
+        System.out.println(mf.findMedian());
+
     }
 }
 
 class Solution {
-    public boolean wordBreak(String s, List<String> wordDict) {
-        Set<String> wordSet = new HashSet<>(wordDict);
-        boolean[] dp = new boolean[s.length() + 1];
-        dp[0] = true;
-        for (int i = 1; i <= s.length(); i++) {
-            for (int j = 0; j < i; j++) {
-                if (dp[j] && wordSet.contains(s.substring(j, i))) {
-                    dp[i] = true;
-                    break;
-                }
-            }
-        }
-        return dp[s.length()];
+
+}
+
+class MedianFinder {
+    List<Integer> list;
+
+    /**
+     * initialize your data structure here.
+     */
+    public MedianFinder() {
+        this.list = new ArrayList<>();
     }
 
+    public void addNum(int num) {
+        this.list.add(num);
+    }
+
+    public double findMedian() {
+        this.list.sort((a, b) -> a - b);
+        int len = list.size();
+        if (len % 2 == 1) {
+            return list.get(len / 2);
+        } else {
+            return ((double) (list.get(len / 2 - 1) + list.get(len / 2))) / 2;
+        }
+    }
 }
