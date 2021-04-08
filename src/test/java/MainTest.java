@@ -1,62 +1,56 @@
 import org.testng.annotations.Test;
 
-import java.util.ArrayList;
-import java.util.List;
-
 public class MainTest {
     @Test
     public void test() {
         Solution sol = new Solution();
-        MedianFinder mf = new MedianFinder();
-        mf.addNum(6);
-        System.out.println(mf.findMedian()); // 6
-        mf.addNum(10);
-        System.out.println(mf.findMedian()); // 8
-        mf.addNum(2);
-        System.out.println(mf.findMedian()); // 6
-        mf.addNum(6);
-        System.out.println(mf.findMedian());
-        mf.addNum(5);
-        System.out.println(mf.findMedian());
-        mf.addNum(6);
-        System.out.println(mf.findMedian());
-        mf.addNum(3);
-        System.out.println(mf.findMedian());
-        mf.addNum(1);
-        System.out.println(mf.findMedian());
-        mf.addNum(0);
-        System.out.println(mf.findMedian());
-        mf.addNum(0);
-        System.out.println(mf.findMedian());
-
+        TicTacToe ticTacToe = new TicTacToe(2);
+        ticTacToe.move(0, 1, 1);
+        ticTacToe.move(1, 1, 2);
+        ticTacToe.move(1, 0, 1);
     }
 }
 
 class Solution {
-
 }
 
-class MedianFinder {
-    List<Integer> list;
+class TicTacToe {
+    int[] row, col;
+    int diagonal, antiDiagonal;
 
     /**
-     * initialize your data structure here.
+     * Initialize your data structure here.
      */
-    public MedianFinder() {
-        this.list = new ArrayList<>();
+    public TicTacToe(int n) {
+        row = new int[n];
+        col = new int[n];
     }
 
-    public void addNum(int num) {
-        this.list.add(num);
-    }
-
-    public double findMedian() {
-        this.list.sort((a, b) -> a - b);
-        int len = list.size();
-        if (len % 2 == 1) {
-            return list.get(len / 2);
-        } else {
-            return ((double) (list.get(len / 2 - 1) + list.get(len / 2))) / 2;
+    /**
+     * Player {player} makes a move at ({row}, {col}).
+     *
+     * @param row    The row of the board.
+     * @param col    The column of the board.
+     * @param player The player, can be either 1 or 2.
+     * @return The current winning condition, can be either:
+     * 0: No one wins.
+     * 1: Player 1 wins.
+     * 2: Player 2 wins.
+     */
+    public int move(int x, int y, int player) {
+        int n = row.length;
+        row[x] += player == 1 ? 1 : -1;
+        if (Math.abs(row[x]) == n) return player;
+        col[y] += player == 1 ? 1 : -1;
+        if (Math.abs(col[y]) == n) return player;
+        if (x == y) {
+            diagonal += player == 1 ? 1 : -1;
+            if (Math.abs(diagonal) == n) return player;
         }
+        if (x + y == n - 1) {
+            antiDiagonal += player == 1 ? 1 : -1;
+            if (Math.abs(antiDiagonal) == n) return player;
+        }
+        return 0;
     }
 }

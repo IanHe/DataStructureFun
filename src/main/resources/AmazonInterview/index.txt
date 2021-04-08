@@ -24,6 +24,7 @@ Dynamic Programming
 Design
     15.Bloom  filter, LRU Cache
     02.Stack Queue PriorityQueue Dequeue
+    19.Design
 
 Others
     03.Hash Map Set
