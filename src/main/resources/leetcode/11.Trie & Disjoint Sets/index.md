@@ -72,3 +72,7 @@ Code Sample:
 ####547. Friend Circles - medium - https://leetcode.com/problems/friend-circles/
 ####200. Number of Islands - medium - https://leetcode.com/problems/number-of-islands/
 ####130. Surrounded Regions - medium - https://leetcode.com/problems/surrounded-regions/
+<br></br>
+<br></br>
+###Did on Leetcode only
+####642. Design Search Autocomplete System - Hard - https://leetcode.com/problems/design-search-autocomplete-system/
