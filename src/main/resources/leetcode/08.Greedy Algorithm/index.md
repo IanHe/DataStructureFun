@@ -30,3 +30,6 @@
 ####874. Walking Robot Simulation - easy - https://leetcode.com/problems/walking-robot-simulation/
 ####45. Jump Game II - hard - https://leetcode.com/problems/jump-game-ii/
 ####12. Integer to Roman - medium - https://leetcode.com/problems/integer-to-roman/
+
+### On Leetcode Only:
+####763. Partition Labels - Medium - https://leetcode.com/problems/partition-labels/

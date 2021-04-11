@@ -24,5 +24,9 @@
 ####51. N-Queens - hard - https://leetcode.com/problems/n-queens/
 ####52. N-Queens II - hard - https://leetcode.com/problems/n-queens-ii/
 
+### On Leetcode Only
+####957. Prison Cells After N Days - medium - https://leetcode.com/problems/prison-cells-after-n-days/
+####186. Reverse Words in a String II - medium - https://leetcode.com/problems/reverse-words-in-a-string-ii/
+
 
 
