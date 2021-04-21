@@ -4,44 +4,36 @@ public class MainTest {
     @Test
     public void test() {
         Solution sol = new Solution();
-        TreeNode node1 = new TreeNode(5);
-        TreeNode node2 = new TreeNode(3);
-        TreeNode node3 = new TreeNode(6);
-        TreeNode node4 = new TreeNode(2);
-        TreeNode node5 = new TreeNode(4);
-        TreeNode node6 = new TreeNode(1);
-        node1.left = node2;
-        node1.right = node3;
-        node2.left = node4;
-        node2.right = node5;
-        node4.left = node6;
-        TreeNode node = sol.lowestCommonAncestor(node1, node6, node5);
-        System.out.println(node.val);
+        System.out.println(sol.isMatch("aa", "a"));
     }
 }
 
 class Solution {
-    public TreeNode lowestCommonAncestor(TreeNode root, TreeNode p, TreeNode q) {
-        int parentVal = root.val;
-        if (p.val > parentVal && q.val > parentVal) {
-            return lowestCommonAncestor(root.right, p, q);
-        } else if (p.val < parentVal && q.val < parentVal) {
-            return lowestCommonAncestor(root.left, p, q);
-        } else {
-            return root;
+
+    public boolean isMatch(String s, String p) {
+        char[] sArr = s.toCharArray(), pArr = p.toCharArray();
+        int m = sArr.length, n = pArr.length;
+        int iStar = -1, jStar = -1;
+        int i = 0, j = 0;
+        while (i < m) {
+            if (j < n && (sArr[i] == pArr[j] || pArr[j] == '?')) {
+                ++i;
+                ++j;
+            } else if (j < n && pArr[j] == '*') {
+                iStar = i;
+                jStar = j++;
+            } else if (iStar >= 0) {
+                i = ++iStar;
+                j = jStar + 1;
+            } else {
+                return false;
+            }
         }
+        while (j < n && pArr[j] == '*') ++j;
+        return j == n;
     }
 }
 
-class TreeNode {
-    int val;
-    TreeNode left;
-    TreeNode right;
-
-    TreeNode(int x) {
-        val = x;
-    }
-}
 
 
 

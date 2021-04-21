@@ -48,6 +48,8 @@ Others
         (using long instead of int)50. Pow(x, n) - medium - https://leetcode.com/problems/powx-n/
     07.DFS & BFS
         126. Word Ladder II - hard - https://leetcode.com/problems/word-ladder-ii/
+    08.Greedy Algorithm
+        44. Wildcard Matching - Hard - https://leetcode.com/problems/wildcard-matching/
     09.Binary Search
         69. Sqrt(x) - easy - https://leetcode.com/problems/sqrtx/
         34. Find First and Last Position of Element in Sorted Array - Medium - https://leetcode.com/problems/find-first-and-last-position-of-element-in-sorted-array/
@@ -58,6 +60,7 @@ Others
     17.Advanced DP
         300. Longest Increasing Subsequence - medium - https://leetcode.com/problems/longest-increasing-subsequence/
         91. Decode Ways - medium - https://leetcode.com/problems/decode-ways/
+        44. Wildcard Matching - Hard - https://leetcode.com/problems/wildcard-matching/
     02.Stack Queue PriorityQueue Dequeue
         239. Sliding Window Maximum - hard - https://leetcode.com/problems/sliding-window-maximum/
     11.Trie & Disjoint Sets
