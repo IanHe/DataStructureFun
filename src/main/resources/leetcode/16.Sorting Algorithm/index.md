@@ -43,6 +43,21 @@
         return count;
     }
     
+    // move the small number one step each to the start of array 
+    public int insertionSort(int[] nums) {
+        if (nums == null || nums.length <= 1) return 0;
+        int count = 0;
+        for (int i = 1; i < nums.length; i++) {
+            int j = i;
+            while (j - 1 >= 0 && nums[j] < nums[j - 1]) {
+                swap(nums, j, j - 1);
+                count++;
+                --j;
+            }
+        }
+        return count;
+    }
+    
     private void swap(int[] nums, int i, int j) {
         int tmp = nums[i];
         nums[i] = nums[j];
@@ -105,31 +120,30 @@
     /*
         Merge Sort
      */
-    public void mergeSort(int[] arr) {
-        dfs(arr, 0, arr.length - 1);
+    public void mergeSort(int[] nums) {
+        _mergeSort(nums, 0, nums.length - 1);
     }
 
-    // help function for recurring
-    private void dfs(int[] arr, int i, int j) {
+    private void _mergeSort(int[] nums, int start, int end) {
         // terminator
-        if (i >= j) return;
-        int mid = (i + j) >> 1;
-        dfs(arr, i, mid);
-        dfs(arr, mid + 1, j);
-        merge(arr, i, mid, j);
+        if (start >= end) return;
+        int mid = (start + end) >> 1;
+        _mergeSort(nums, start, mid);
+        _mergeSort(nums, mid + 1, end);
+        merge(nums, start, mid, end);
     }
 
-    private void merge(int[] arr, int start, int mid, int end) {
+    private void merge(int[] nums, int start, int mid, int end) {
         // new temp array to store merged array
         int[] tmp = new int[end - start + 1];
-        int i = start, j = mid + 1, k = 0;
+        int k = 0, i = start, j = mid + 1;
         while (i <= mid && j <= end) {
-            tmp[k++] = arr[i] <= arr[j] ? arr[i++] : arr[j++];
+            tmp[k++] = nums[i] < nums[j] ? nums[i++] : nums[j++];
         }
-        while (i <= mid) tmp[k++] = arr[i++];
-        while (j <= end) tmp[k++] = arr[j++];
+        while (i <= mid) tmp[k++] = nums[i++];
+        while (j <= end) tmp[k++] = nums[j++];
         // now k is the length of tmp
-        System.arraycopy(tmp, 0, arr, start, k);
+        System.arraycopy(tmp, 0, nums, start, k);
     }
 ```
 ###Quick Sort vs Merge Sort
