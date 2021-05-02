@@ -1,0 +1,35 @@
+-- Pay Attention --
+    02.Stack Queue PriorityQueue Dequeue
+        239. Sliding Window Maximum - hard - https://leetcode.com/problems/sliding-window-maximum/
+    04.Tree BinaryTree BinarySearchTree
+        94. Binary Tree Inorder Traversal - medium - https://leetcode.com/problems/binary-tree-inorder-traversal/
+        144. Binary Tree Preorder Traversal - medium - https://leetcode.com/problems/binary-tree-preorder-traversal/
+        145. Binary Tree Postorder Traversal - medium - https://leetcode.com/problems/binary-tree-postorder-traversal/
+        101. Symmetric Tree - Easy - https://leetcode.com/problems/symmetric-tree/
+        207. Course Schedule - Medium - https://leetcode.com/problems/course-schedule/
+    06.Divide Conquer &  Backtracking
+        (using long instead of int)50. Pow(x, n) - medium - https://leetcode.com/problems/powx-n/
+    07.DFS & BFS
+        126. Word Ladder II - hard - https://leetcode.com/problems/word-ladder-ii/
+    08.Greedy Algorithm
+        44. Wildcard Matching - Hard - https://leetcode.com/problems/wildcard-matching/
+    09.Binary Search
+        69. Sqrt(x) - easy - https://leetcode.com/problems/sqrtx/
+        34. Find First and Last Position of Element in Sorted Array - Medium - https://leetcode.com/problems/find-first-and-last-position-of-element-in-sorted-array/
+    11.Trie & Disjoint Sets
+        212. Word Search II - hard - https://leetcode.com/problems/word-search-ii/
+    12.Advanced Search
+        37. Sudoku Solver - hard - https://leetcode.com/problems/sudoku-solver/
+        1091. Shortest Path in Binary Matrix - medium -  https://leetcode.com/problems/shortest-path-in-binary-matrix/
+        773. Sliding Puzzle - hard - https://leetcode.com/problems/sliding-puzzle/
+    14.Bit Operation
+        190. Reverse Bits - easy - https://leetcode.com/problems/reverse-bits/
+    16. Sorting Algorithm
+        218. The Skyline Problem - Hard - https://leetcode.com/problems/the-skyline-problem/
+    17.Advanced DP
+        300. Longest Increasing Subsequence - medium - https://leetcode.com/problems/longest-increasing-subsequence/
+        91. Decode Ways - medium - https://leetcode.com/problems/decode-ways/
+        44. Wildcard Matching - Hard - https://leetcode.com/problems/wildcard-matching/
+    18.String Algorithm
+        10. Regular Expression Matching - hard - https://leetcode.com/problems/regular-expression-matching/
+        (solution 2 - DP) 5. Longest Palindromic Substring - medium - https://leetcode.com/problems/longest-palindromic-substring/
