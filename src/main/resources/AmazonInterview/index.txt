@@ -48,6 +48,7 @@ Others
         (using long instead of int)50. Pow(x, n) - medium - https://leetcode.com/problems/powx-n/
     07.DFS & BFS
         126. Word Ladder II - hard - https://leetcode.com/problems/word-ladder-ii/
+        1197. Minimum Knight Moves - Medium - https://leetcode.com/problems/minimum-knight-moves/
     08.Greedy Algorithm
         44. Wildcard Matching - Hard - https://leetcode.com/problems/wildcard-matching/
     09.Binary Search
