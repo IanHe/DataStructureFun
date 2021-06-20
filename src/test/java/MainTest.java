@@ -1,52 +1,32 @@
 import org.testng.annotations.Test;
 
-import java.util.Arrays;
-import java.util.LinkedList;
-import java.util.Queue;
+import java.util.*;
 
 public class MainTest {
     @Test
     public void test() {
         Solution sol = new Solution();
+
     }
 }
 
 class Solution {
 
-    public int minKnightMoves(int x, int y) {
-        int[][] DIRECTIONS = new int[][]{{2, 1}, {1, 2}, {-1, 2}, {-2, 1}, {-2, -1}, {-1, -2}, {1, -2}, {2, -1}};
-        x = Math.abs(x);
-        y = Math.abs(y);
-
-        Queue<int[]> queue = new LinkedList<>();
-        queue.add(new int[]{0, 0});
-
-        boolean[][] visited = new boolean[305][305];
-        visited[1][1] = true;
-
-        int result = 0;
-        while (!queue.isEmpty()) {
-            int size = queue.size();
-            for (int i = 0; i < size; i++) {
-                int[] cur = queue.remove();
-                int curX = cur[0];
-                int curY = cur[1];
-                if (curX == x && curY == y) {
-                    return result;
-                }
-
-                for (int[] d : DIRECTIONS) {
-                    int newX = curX + d[0];
-                    int newY = curY + d[1];
-                    if (newX >= -1 && newY >= -1 && !visited[newX + 1][newY + 1]) {
-                        queue.add(new int[]{newX, newY});
-                        visited[newX + 1][newY + 1] = true;
-                    }
-                }
+    public List<List<String>> groupAnagrams(String[] strs) {
+        long[] primes = {2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31, 37, 41, 43, 47,
+                53, 59, 61, 67, 71, 73, 79, 83, 89, 97, 101};
+        Map<Long, List<String>> map = new HashMap<>();
+        for (String str : strs) {
+            char[] chars = str.toCharArray();
+            long hash = 1;
+            for (char c : chars) {
+                hash *= primes[c - 'a'];
             }
-            result++;
+            List<String> list = map.getOrDefault(hash, new ArrayList<>());
+            list.add(str);
+            map.put(hash, list);
         }
-        return -1;
+        return new ArrayList(map.values());
     }
 }
 
